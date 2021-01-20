@@ -188,6 +188,210 @@
         <!-- Main row -->
 
         <!-- /.row -->
+        <div class="">
+                                  
+                                     <a href="">
+                                     <button class="btn btn-primary" style="float: right;font-weight:bold;">Add Customers</button>
+                                     </a>
+                
+                                     <button type="button" class="btn__imp"  style="float: right">Import Customers</button>
+                                     <button type="button" class="btn__imp"  style="float: right">Export</button>
+                                  
+                                 </div>
+                                <br/> 
+                     <div class="customer__main">
+                              <br/>
+                                <div class="first__content_row">
+                              
+                             
+                            <div class="searc_______option">
+                            <div class="form-group">
+                <div class="icon-addon addon-md">
+                    <input type="text" placeholder="Filter customers" class="form-control" id="email">
+                    <label for="email" class="glyphicon glyphicon-search" rel="tooltip" title="email"></label>
+                </div>
+            </div> </div>
+                        
+                                            <div class="btn-group grop___btn_first" role="group">
+                                            <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-default dropdown-toggle  btn____togle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                       Email subscribtion status
+                                            <span class="caret" style="margin-left:5px;"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                            <li><a href="#">
+                                            <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                            <label class="form-check-label" for="flexRadioDefault1">
+                                               Subcribe
+                                            </label>
+                                            </div>
+                                            </a></li>
+                                            <li><a href="#">
+                                            <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                            <label class="form-check-label" for="flexRadioDefault1">
+                                            Pending confirmation
+                                            </label>
+                                            </div>
+                                            </a></li>
+                                            <li><a href="#">
+                                            <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                            <label class="form-check-label" for="flexRadioDefault1">
+                                              Not Subcribed
+                                            </label>
+                                            </div>
+                                            </a></li>
+                                            <li><a href="#">Clear</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-default dropdown-toggle  btn____togle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                           Tangged with
+                                            <span class="caret"  style="margin-left:5px;"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                            <li><a href="#">
+                                            <input type="text" class="input___text__"/>
+                                            </a></li>
+                                            <li><a href="#">Clear</a></li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-default dropdown-toggle  btn____togle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            More filters
+                                           
+                                            </button>
+                                           
+                                        </div>
+                                        
+                                            
+                                            
+                                        
+                                        </div>
+                                        <a href="#" class="btn btn-primary btn___disable disabled" tabindex="-1" aria-disabled="true" role="button" data-bs-toggle="button"><i class="fa fa-star" aria-hidden="true"></i> Saved</a>
+                          
+                                      
+                                 </div>
+                              
+                              <div class="customer__content_2">
+                                  <div style="margin-left:17px;">
+                      
+                                  
+                              
+                              <div class="container">
+                                  <div class="row">
+                                      <div class="col-lg-6 col-md-6 col-3 mt-3">
+                                      <div style="margin-left:0px;">
+                                  <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                        <span style="margin-left: 8px;">Result 3 of 3 of customers</span> 
+                            </label>
+                            </div>
+                                  
+                                  </div>
+                                      </div>
+                                      <div class="col-lg-6 col-md-6 col-3 mt-2">
+                                      <div style="margin-right:30px;">
+                                      <select class="customer__select">
+                                          <option value="1">Sort by last update(newest first)</option>
+                                          <option value="1">last update(newest first)</option>
+                                          <option value="1">last update(oldest first)</option>
+                                          <option value="1">amount spend(high to low)</option>
+                                          <option value="1">amount spend(low to high)</option>
+                                      </select>
+                                  </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <hr class="w-100"/> 
+                                    
+                              <div class="container">
+                                  <div class="row">
+                                      <div class="col-lg-5 col-md-5 col-6">
+                                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                             <span style="margin-left: 8px;">Lin Dan</span> 
+                           
+                          
+                            </label>
+                            </div>
+                                      </div>
+                                      <div class="col-lg-3 col-md-3 col-6">
+                                     <p>0 orders</p>
+                                      </div>
+                                      <div class="col-lg-2 col-md-2 col-6">
+                                      <p>US$0.00 spent</p>
+                                      </div>
+                                  </div>
+                                  <hr class="w-100">
+                                  <div class="row">
+                                      <div class="col-lg-5 col-md-5 col-6">
+                                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                             <span style="margin-left: 8px;">Lin Dan</span> 
+                           
+                          
+                            </label>
+                            </div>
+                                      </div>
+                                      <div class="col-lg-3 col-md-3 col-6">
+                                     <p>0 orders</p>
+                                      </div>
+                                      <div class="col-lg-2 col-md-2 col-6">
+                                      <p>US$0.00 spent</p>
+                                      </div>
+                                  </div>
+                                  <hr class="w-100">
+                                  <div class="row">
+                                      <div class="col-lg-5 col-md-5 col-6">
+                                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                             <span style="margin-left: 8px;">M Evidea</span> 
+                           
+                          
+                            </label>
+                            </div>
+                                      </div>
+                                      <div class="col-lg-3 col-md-3 col-6">
+                                     <p>0 orders</p>
+                                      </div>
+                                      <div class="col-lg-2 col-md-2 col-6">
+                                      <p>US$0.00 spent</p>
+                                      </div>
+                                  </div>
+                                  <hr class="w-100">
+                                  <div class="row">
+                                      <div class="col-lg-4 col-md-4 col-6">
+                                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                             <span style="margin-left: 8px;">Monreo@gmail.com</span> 
+                           
+                          
+                            </label>
+                            </div>
+                                      </div>
+                                      <div class="col-lg-2 col-md-3 col-6">
+                                     <p class="sub___btn">Subcribe</p>
+                                      </div>
+                                      <div class="col-lg-2 col-md-3 col-6">
+                                     <p class="order____btn">0 orders</p>
+                                      </div>
+                                      <div class="col-lg-1 col-md-2 col-6">
+                                      <p>US$0.00 spent</p>
+                                      </div>
+                                  </div>
+                              </div>
+                        
+        </div>
+
     </section>
     <!-- /.content -->
 </div>

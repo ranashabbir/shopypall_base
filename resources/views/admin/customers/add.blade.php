@@ -13,132 +13,166 @@
 
     <!-- Main content -->
     <section class="content">
-        <!-- Info boxes -->
-
-        <!-- /.row -->
-        <div class="row">
-            <div class="col-md-12">
-                <div class="box">
-                    <div class="box-header">
-                        <h3 class="box-title">{{ trans('labels.AddCustomer') }} </h3>
-                    </div>
-
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <div class="box box-info">
-                                    <!--<div class="box-header with-border">
-                                          <h3 class="box-title">Edit category</h3>
-                                        </div>-->
-                                    <!-- /.box-header -->
-                                    <br>
-                                    @if (session('update'))
-                                    <div class="alert alert-success alert-dismissable custom-success-box" style="margin: 15px;">
-                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                        <strong> {{ session('update') }} </strong>
-                                    </div>
-                                    @endif
-
-                                    @if (count($errors) > 0)
-                                    @if($errors->any())
-                                    <div class="alert alert-danger alert-dismissible" role="alert">
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                        {{$errors->first()}}
-                                    </div>
-                                    @endif
-                                    @endif
-
-                                    <div class="box-body">
-                                        {!! Form::open(array('url' =>'admin/customers/add', 'method'=>'post', 'class' => 'form-horizontal form-validate', 'enctype'=>'multipart/form-data')) !!}
-
-                                                                        <div class="form-group">
-                                                                          <label for="name" class="col-sm-2 col-md-3 control-label">{{ trans('labels.FirstName') }} </label>
-                                                                          <div class="col-sm-10 col-md-4">
-                                                                            {!! Form::text('customers_firstname',  '', array('class'=>'form-control field-validate', 'id'=>'customers_firstname')) !!}
-                                                                            <span class="help-block" style="font-weight: normal;font-size: 11px;margin-bottom: 0;">{{ trans('labels.FirstNameText') }}</span>
-                                                                            <span class="help-block hidden">{{ trans('labels.textRequiredFieldMessage') }}</span>
-                                                                          </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                          <label for="name" class="col-sm-2 col-md-3 control-label">{{ trans('labels.LastName') }} </label>
-                                                                          <div class="col-sm-10 col-md-4">
-                                                                            {!! Form::text('customers_lastname',  '', array('class'=>'form-control field-validate', 'id'=>'customers_lastname')) !!}
-                                                                            <span class="help-block" style="font-weight: normal;font-size: 11px;margin-bottom: 0;">{{ trans('labels.lastNameText') }}</span>
-                                                                            <span class="help-block hidden">{{ trans('labels.textRequiredFieldMessage') }}</span>
-                                                                          </div>
-                                                                        </div>
-                                                                        
-                                                                          
-                                                                        
-                                                                        <div class="form-group">
-                                                                          <label for="name" class="col-sm-2 col-md-3 control-label">{{ trans('labels.Telephone') }}</label>
-                                                                          <div class="col-sm-10 col-md-4">
-                                                                            {!! Form::text('customers_telephone',  '', array('class'=>'form-control phone-validate', 'id'=>'customers_telephone')) !!}
-                                                                           <span class="help-block" style="font-weight: normal;font-size: 11px;margin-bottom: 0;">
-                                                                           {{ trans('labels.TelephoneText') }}</span>
-                                                                          </div>
-                                                                        </div>
-                                                                        <!-- <div class="form-group">
-                                                                          <label for="name" class="col-sm-2 col-md-3 control-label">{{ trans('labels.Fax') }}</label>
-                                                                          <div class="col-sm-10 col-md-4">
-                                                                            {!! Form::text('customers_fax',  '', array('class'=>'form-control', 'id'=>'customers_fax')) !!}
-                                                                            <span class="help-block" style="font-weight: normal;font-size: 11px;margin-bottom: 0;">{{ trans('labels.FaxText') }}</span>
-                                                                          </div>
-                                                                        </div> -->
-                                                                        <hr>
-                                                                        <div class="form-group">
-                                                                          <label for="name" class="col-sm-2 col-md-3 control-label">{{ trans('labels.EmailAddress') }} </label>
-                                                                          <div class="col-sm-10 col-md-4">
-                                                                            {!! Form::text('email',  '', array('class'=>'form-control email-validate', 'id'=>'email')) !!}
-                                                                             <span class="help-block" style="font-weight: normal;font-size: 11px;margin-bottom: 0;">
-                                                                             {{ trans('labels.EmailText') }}</span>
-                                                                            <span class="help-block hidden"> {{ trans('labels.EmailError') }}</span>
-                                                                          </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                          <label for="name" class="col-sm-2 col-md-3 control-label">{{ trans('labels.Password') }}</label>
-                                                                          <div class="col-sm-10 col-md-4">
-                                                                            {!! Form::password('password', array('class'=>'form-control field-validate', 'id'=>'password')) !!}
-                                                        	                <span class="help-block" style="font-weight: normal;font-size: 11px;margin-bottom: 0;">
-                                                                           {{ trans('labels.PasswordText') }}</span>
-                                                                            <span class="help-block hidden">{{ trans('labels.textRequiredFieldMessage') }}</span>
-                                                                          </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                          <label for="name" class="col-sm-2 col-md-3 control-label">{{ trans('labels.Status') }} </label>
-                                                                          <div class="col-sm-10 col-md-4">
-                                                                            <select class="form-control" name="isActive">
-                                                                                  <option value="1">{{ trans('labels.Active') }}</option>
-                                                                                  <option value="0">{{ trans('labels.Inactive') }}</option>
-                                        									</select>
-                                                                          <span class="help-block" style="font-weight: normal;font-size: 11px;margin-bottom: 0;">
-                                                                          {{ trans('labels.StatusText') }}</span>
-                                                                          </div>
-                                                                        </div>
-                                                                        <div class="box-footer text-center">
-                                                                            <button type="submit" class="btn btn-primary">{{ trans('labels.Submit') }}</button>
-                                                                            <a href="{{ URL::to('admin/customers/display')}}" type="button" class="btn btn-default">{{ trans('labels.back') }}</a>
-                                                                        </div>
-
-                                        {!! Form::close() !!}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <!-- /.box-body -->
-                </div>
-                <!-- /.box -->
-            </div>
-            <!-- /.col -->
+      
+        <div style="margin-left: 15px;"> 
+                        <h3 class="box-title"><i class="fa fa-arrow-left back__arrow" aria-hidden="true"></i><span class="sapan_cls"></span> Customers</h3>
+                    </div><br/>
+                    <hr class="new122">
+     <div class="container">
+       <form>
+       <div class="row">
+         <div class="col-lg-4 col-md-4 col-12 mx-auto">
+           <h3>Customer overview</h3>
+         </div>
+         <div class="col-lg-6 col-md-6 col-12 mx-auto  add____customer_shadow">
+          <div class="row">
+            <div class="col-md-6 col-12 mx-auto">
+            <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">First Name</label>
+          <input type="text" class="form-control" id="exampleFormControlInput1" >
         </div>
-        <!-- /.row -->
+            </div>
+            <div class="col-md-6 col-12 mx-auto">
+            <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Last Name</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" >
+      </div>
+            </div> 
+      
+            <div class="mb-3" style="width:94%;margin-left:3%;">
+            <br/>
+          <label for="exampleFormControlInput1" class="form-label">Email</label>
+          <input type="email" class="form-control" id="exampleFormControlInput1" >
+        </div>
+        <br/>
+        <div class="mb-3" style="width:94%;margin-left:3%;">
+          <label for="exampleFormControlInput1" class="form-label">Phone</label>
+          <input type="number" class="form-control" id="exampleFormControlInput1" >
+        </div>
+        <br/>
+        <div class="form-check" style="margin-left:3%;">
+  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+  <label class="form-check-label" for="flexCheckDefault">
+    <span style="font-size:13px;margin-botton:8px; ">  Customer agreed to receive marketing emails.</span>
 
-        <!-- Main row -->
 
-        <!-- /.row -->
+  </label>
+</div>
+<p style="margin-left:4%;">You should ask your customers for permission before you subscribe <br/>them to your marketing emails.</p>
+          </div>
+         </div>
+       </div>
+       <hr class="new122">
+       <div class="row">
+         <div class="col-lg-4 col-md-4 col-12 mx-auto">
+           <h3>Address</h3>
+           <p>The primary address of this customer</p>
+         </div>
+         <div class="col-lg-6 col-md-6 col-12 mx-auto  add____customer_shadow">
+          <div class="row">
+            <div class="col-md-6 col-12 mx-auto">
+            <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">First Name</label>
+          <input type="text" class="form-control" id="exampleFormControlInput1" >
+        </div>
+            </div>
+            <div class="col-md-6 col-12 mx-auto">
+            <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Last Name</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" >
+      </div>
+            </div> 
+      
+            <div class="mb-3" style="width:93%;margin-left:3.5%;">
+            <br/>
+          <label for="exampleFormControlInput1" class="form-label">Company</label>
+          <input type="text" class="form-control" id="exampleFormControlInput1" >
+        </div>
+        <br/>
+        <div class="mb-3" style="width:93%;margin-left:3.5%;">
+          <label for="exampleFormControlInput1" class="form-label">Address</label>
+          <input type="text" class="form-control" id="exampleFormControlInput1" >
+        </div>
+        <br/>
+        <div class="mb-3" style="width:93%;margin-left:3.5%;">
+          <label for="exampleFormControlInput1" class="form-label">Apartment, suite, etc.</label>
+          <input type="text" class="form-control" id="exampleFormControlInput1" >
+        </div>
+        <br/>
+        <div class="mb-3" style="width:93%;margin-left:3.5%;">
+          <label for="exampleFormControlInput1" class="form-label">City</label>
+          <input type="text" class="form-control" id="exampleFormControlInput1" >
+        </div>
+        <br/>
+       
+               <div class="row">
+                 <div class="col-md-6 col-12 mx-auto">
+                 <div class="mb-3 my____from">
+        <label for="exampleFormControlInput1" class="form-label">Country/Region</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" >
+      </div>
+                 </div>
+                 <div class="col-md-6 col-12 mx-auto">
+                 <div class="mb-3 my____from1" >
+        <label for="exampleFormControlInput1" class="form-label">Postal code</label>
+        <input type="number" class="form-control" id="exampleFormControlInput1" >
+      </div>
+                 </div>
+               </div>
+               <br/>
+        <div class="mb-3" style="width:93%;margin-left:3.5%;">
+          <label for="exampleFormControlInput1" class="form-label">Phone</label>
+          <input type="number" class="form-control" id="exampleFormControlInput1" >
+        </div>
+          </>
+         </div>
+       </div>
+     
+     </div>
+     </div>
+     <hr class="new122">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-12 mx-auto">
+          <h4>Notes</h4>
+          <p>Add notes about your customer.</p>
+        </div>
+        <div class="col-lg-6 col-md-6 col-12 mx-auto add____customer_shadow">
+        
+        <div class="mb-3" style="width:93%;margin-left:3.5%;">
+          <label for="exampleFormControlInput1" class="form-label">Note</label>
+          <input type="text" class="form-control" id="exampleFormControlInput1" >
+        </div><br/>
+        </div>
+      </div>
+      
+      <div class="row">
+      <hr class="new122">
+        <div class="col-lg-4 col-md-4 col-12 mx-auto">
+          <h4>Tags</h4>
+          <p>ags can be used to categorize customers<br/> into groups.</p>
+        </div>
+        <div class="col-lg-6 col-md-6 col-12 mx-auto add____customer_shadow">
+        
+        <div class="mb-3" style="width:93%;margin-left:3.5%;">
+          <label for="exampleFormControlInput1" class="form-label">Tags</label>
+          <input type="text" class="form-control" id="exampleFormControlInput1" >
+        </div>
+        <p style="margin-left:4%;margin-top:2%;">Add existing tags:</p>
+        <div class="add_blad__button">
+          <button>password page</button>
+          <button>prospect</button>
+        </div>
+        </div>
+      </div>
+      
+      <div class="sub______btn__cs">
+      <button class="btn btn-primary">Submit</button>
+      <button class="back____btn">Back</button>
+      </div>
+      </form>
+    </div>
+    <hr class="new122">
     </section>
     <!-- /.content -->
 </div>

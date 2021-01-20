@@ -40,3 +40,117 @@
   text-align:center;
   padding: 0 30px; margin: 15px 0;
 }
+.customer__main{
+  margin-top:4%;
+  background:white;
+  width: 100%;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+}
+.customer__content_2{
+  display: flex;
+  justify-content: space-between;
+}
+.customer__select{
+  padding: 5px 30px;
+  border: none;
+  border:1px solid rgb(230, 228, 228);
+  outline: none;
+}
+.sub___btn{
+  width: 38%;
+  padding: 4px;
+  border-radius: 14px;
+  background:rgba(174,233,209,1);
+  -webkit-border-radius: 14px;
+  -moz-border-radius: 14px;
+  -ms-border-radius: 14px;
+  -o-border-radius: 14px;
+}
+.order____btn{
+  position: relative;
+  right:60%;
+}
+@media(max-width:700px){
+  .customer__main{
+    margin-top:4%;
+ 
+    width: 100%;
+  
+  
+  }
+  .grop___btn_first{
+    flex-direction: row;
+  }
+}
+.add____customer_shadow{
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+  padding:10px;
+  background: white;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+}
+.my____from{
+  width:93%;
+  margin-left:7.5%;
+}
+.my____from1{
+  width:93%;
+  
+}
+
+@media(max-width:900px){
+  .my____from{
+    
+    margin-left:3.5%;
+  }
+  .my____from1{
+    margin-left:3.5%;
+  }
+  .sub______btn__cs{
+  
+    position: relative;
+    left: -35% !important;
+    
+   
+  }
+}
+.add_blad__button{
+  margin-left: 4%;
+} 
+.add_blad__button button{
+  border-radius: 4px;
+  border: none;
+  padding: 4px 20px;
+  background: rgb(228, 229 ,231);
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+.back____btn{
+  padding: 4px 16px;
+  border-radius: 4px;
+  border: none;
+  background: rgb(228, 229 ,231);
+  margin-left: 1%;
+}
+.sub______btn__cs{
+  position: relative;
+  right: 10.5%;
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+}
+hr.new122 {
+  border-top: 1px solid rgb(204, 204, 204);
+  width: 104%;
+  margin-left: 1.6%;
+}
