@@ -535,8 +535,8 @@ left: 6%;
    border: none;
    border: 1px solid rgb(218, 216, 216);
    margin-left: 10px;
-   padding: 5px 15px;
-   height: 3%;
+   padding: 5.5px 15px;
+   height: 3.5%;
    border-radius: 4px;
    -webkit-border-radius: 4px;
    -moz-border-radius: 4px;
@@ -566,4 +566,198 @@ left: 6%;
 }
 .Modal____sty:hover{
     background: #eeecec;
+}
+.edit__button_1{
+    
+    padding-top: 7%;
+    margin-left: 45%;
+}
+.Dublicate___buton{
+    border: none;
+    font-weight: bold;
+}
+
+/* <-----------EDIT PAGE===========> */
+.edit_page__main{
+    background:white;
+   padding: 12px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
+.edit_page__main1{
+    padding: 12px;
+    background:white;
+   margin-left: 2%;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
+.draft___prod{
+    border: none;
+    border: 1px solid #d3d2d2;
+  width: 100% !important;
+  padding: 5px !important;
+    outline: none;
+}
+
+@media (max-width: 768px){
+    .edit_page__main{
+       margin-top: 2%;
+    }
+    .edit_page__main1{
+        margin-top: 2%;
+       margin-left: 0%;
+      
+    }
+    .edit_page__main1{
+       
+       
+        margin-left: 0% !important;
+    }
+    .draft___prod1{
+        left: 47% !important;
+       
+    }
+}
+@media (max-width: 600px){
+    .edit__button_1{
+    
+      
+        margin-left: 30%;
+    }
+}
+.draft___prod1{
+    position: relative;
+    left: 46%;
+    border: none;
+    border: 1px solid #d3d2d2;
+  width: 44% !important;
+  padding: 5px !important;
+    outline: none;
+}
+.draft___prod122{
+    position: relative;
+    left: 57%;
+    border: none;
+    border: 1px solid #d3d2d2;
+  width: 21% !important;
+  padding: 5px !important;
+    outline: none;
+}
+.add_varient-cs{
+    margin-top: 1%;
+    position: relative;
+    left: 54%;
+}
+.edit_page__main1{
+    padding: 12px;
+    background:white;
+   margin-left: 2%;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
+.edit__upload_file{
+    height:140px;
+    
+    border: 2px dashed #d1d0d0;
+    display: grid;
+    place-items: center;
+}
+.edit__upload_file button{
+    border:none;
+    padding: 5px 12px;
+    background:#ebeaea;
+    color:black;
+}
+.edit__upload_file:hover{
+    background:#dad8d8;
+}
+.edit_page_main_2{
+    padding: 12px;
+    background:white;
+ margin-top: 2%;
+ width: 57%;
+ margin-left: 1.6%;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
+.edit_page_main_3{
+    padding: 12px;
+    background:white;
+    margin-top: 2%;
+   margin-left: 1.6%;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
+@media (max-width: 1000px){
+    .edit_page_main_2{
+     width: 94%;
+     
+    }
+    .add_varient-cs{
+      
+        left: 44%;
+    }
+    .draft___prod122{
+        left: 50%;
+       
+    }
+    .draft___prod122{
+        width: 24% !important;
+    }
+}
+.btn-grouppp button {
+    background-color: transparent !important; 
+    border: 1px solid #dbdbdb; 
+    color: black; 
+    padding: 5px 12px;
+    cursor: pointer; 
+    float: left !important; 
+  }
+  .images___button{
+      border: none;
+      padding: 7px 13px;
+      background: none;
+      outline:none;
+  }
+.edit__product____img{
+    width: 80px;
+    height: 70px;
+    border: 1px solid #d4d0d0;
+    padding: 7px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+hr.edit_hr {
+    border-top: 1px solid #ccc8c8;
+  }
+  .archive__button{
+      border: none;
+      border: 1px solid #ccc8c8;
+      background: white;
+      color: black;
+      border-radius: 4px;
+      padding:6px 20px;
+      outline: none;
+      font-weight: bold;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      -ms-border-radius: 4px;
+      -o-border-radius: 4px;
+}
+.delete__button{
+    border: none;
+    border: 1px solid rgb(219, 40, 40);
+    background: white;
+    color: rgb(219, 40, 40);
+    border-radius: 4px;
+    padding:6px 20px;
+    outline: none;
+    font-weight: bold;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
 }

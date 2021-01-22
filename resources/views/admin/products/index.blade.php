@@ -197,16 +197,6 @@
                 <p>Showing 1 to 1 of 1 entries</p>
             </div><br />
         </div>
-
-        <!-- <====================Edit page==================> -->
-        <h3>Edit page start</h3>
-
-        <div class="add__new_products">
-            <h3 class="box-title"><i class="fa fa-arrow-left back__arrow" aria-hidden="true"></i><span
-                    class="sapan_cls"></span> Short Sleeve Tshit <span
-                    style="background-color:rgba(164,232,242,1);padding:4px 12px;border-radius:18px;font-size:15px;">Draft</span>
-            </h3>
-        </div><br />
 </div>
 
 <!-- Import button  Modal -->

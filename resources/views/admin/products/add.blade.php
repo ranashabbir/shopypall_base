@@ -95,7 +95,9 @@
                     <hr class="w-100" />
                     <h5>TAGS</h5>
                     <input type="text" placeholder="vintage,cotton,summer" class="tags__cs" />
+                    <hr class="w-100" />
                 </div>
+
             </div>
         </div>
         <div class="second___content">
@@ -329,12 +331,12 @@
                                     <div id="imageselected ">
 
                                         {!! Form::button( trans('labels.Add Image'),
-                                        array('id'=>'newImage','class'=>"btn btn-primary field-validate",
+                                        array('id'=>'newImage','class'=>"btn btn-secondary field-validate",
                                         'data-toggle'=>"modal", 'data-target'=>"#Modalmanufactured" )) !!}
                                         <br>
                                         <div id="selectedthumbnail" class="selectedthumbnail col-md-5"> </div>
                                         <div class="closimage ">
-                                            <button type="button" class="close pull-left image-close " id="image-close"
+                                            <button type="button" class="close pull-left image-close" id="image-close"
                                                 style="display: none; position: absolute;left: 110px; top: 54px; background-color: black; color: white; opacity: 2.2; "
                                                 aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
@@ -366,6 +368,7 @@
 
             </div>
             <hr><br />
+            <br />
             <div class="row last__tabs">
                 <div class="col-xs-12">
                     <div class="tabbable tabs-left">
