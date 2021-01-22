@@ -26,6 +26,7 @@
         0 => 'password',
       ),
     ),
+<<<<<<< HEAD
     'name' => 'ShopyPall',
     'env' => 'local',
     'debug' => true,
@@ -34,6 +35,16 @@
     'locale' => 'en',
     'fallback_locale' => 'en',
     'key' => 'base64:bODi8VtmENqnjklBmNJzQcTTSC8jNjBysfnjQN59btE=',
+=======
+    'name' => 'shopypall',
+    'env' => 'local',
+    'debug' => true,
+    'url' => 'http://shopypall.test',
+    'timezone' => 'UTC',
+    'locale' => 'en',
+    'fallback_locale' => 'en',
+    'key' => 'base64:U+bAENJ3cry5p8EGS9JivM+3LvJtVkOQ+/xdc47Eggk=',
+>>>>>>> 5e181760454718a56036af06f046628a2377c98a
     'cipher' => 'AES-256-CBC',
     'providers' => 
     array (
@@ -175,19 +186,32 @@
   array (
     'backup' => 
     array (
+<<<<<<< HEAD
       'name' => 'ShopyPall',
+=======
+      'name' => 'shopypall',
+>>>>>>> 5e181760454718a56036af06f046628a2377c98a
       'source' => 
       array (
         'files' => 
         array (
           'include' => 
           array (
+<<<<<<< HEAD
             0 => 'F:\\xampp\\htdocs\\shopypall_base',
           ),
           'exclude' => 
           array (
             0 => 'F:\\xampp\\htdocs\\shopypall_base\\vendor',
             1 => 'F:\\xampp\\htdocs\\shopypall_base\\node_modules',
+=======
+            0 => 'C:\\xampp\\htdocs\\shopypall_base',
+          ),
+          'exclude' => 
+          array (
+            0 => 'C:\\xampp\\htdocs\\shopypall_base\\vendor',
+            1 => 'C:\\xampp\\htdocs\\shopypall_base\\node_modules',
+>>>>>>> 5e181760454718a56036af06f046628a2377c98a
           ),
           'follow_links' => false,
         ),
@@ -205,7 +229,11 @@
           0 => 'local',
         ),
       ),
+<<<<<<< HEAD
       'temporary_directory' => 'F:\\xampp\\htdocs\\shopypall_base\\storage\\app/backup-temp',
+=======
+      'temporary_directory' => 'C:\\xampp\\htdocs\\shopypall_base\\storage\\app/backup-temp',
+>>>>>>> 5e181760454718a56036af06f046628a2377c98a
     ),
     'notifications' => 
     array (
@@ -258,7 +286,11 @@
     array (
       0 => 
       array (
+<<<<<<< HEAD
         'name' => 'ShopyPall',
+=======
+        'name' => 'shopypall',
+>>>>>>> 5e181760454718a56036af06f046628a2377c98a
         'disks' => 
         array (
           0 => 'local',
@@ -338,7 +370,11 @@
       'file' => 
       array (
         'driver' => 'file',
+<<<<<<< HEAD
         'path' => 'F:\\xampp\\htdocs\\shopypall_base\\storage\\framework/cache/data',
+=======
+        'path' => 'C:\\xampp\\htdocs\\shopypall_base\\storage\\framework/cache/data',
+>>>>>>> 5e181760454718a56036af06f046628a2377c98a
       ),
       'memcached' => 
       array (
@@ -444,8 +480,13 @@
         'host' => '127.0.0.1',
         'port' => '3306',
         'database' => 'shopypall',
+<<<<<<< HEAD
         'username' => 'root',
         'password' => '',
+=======
+        'username' => 'user@atta',
+        'password' => 'user@atta',
+>>>>>>> 5e181760454718a56036af06f046628a2377c98a
         'unix_socket' => '',
         'charset' => 'utf8',
         'collation' => 'utf8_unicode_ci',
@@ -460,8 +501,13 @@
         'host' => '127.0.0.1',
         'port' => '3306',
         'database' => 'shopypall',
+<<<<<<< HEAD
         'username' => 'root',
         'password' => '',
+=======
+        'username' => 'user@atta',
+        'password' => 'user@atta',
+>>>>>>> 5e181760454718a56036af06f046628a2377c98a
         'charset' => 'utf8',
         'prefix' => '',
         'schema' => 'public',
@@ -473,8 +519,13 @@
         'host' => '127.0.0.1',
         'port' => '3306',
         'database' => 'shopypall',
+<<<<<<< HEAD
         'username' => 'root',
         'password' => '',
+=======
+        'username' => 'user@atta',
+        'password' => 'user@atta',
+>>>>>>> 5e181760454718a56036af06f046628a2377c98a
         'charset' => 'utf8',
         'prefix' => '',
       ),
@@ -501,13 +552,22 @@
       'local' => 
       array (
         'driver' => 'local',
+<<<<<<< HEAD
         'root' => 'F:\\xampp\\htdocs\\shopypall_base\\storage\\app',
+=======
+        'root' => 'C:\\xampp\\htdocs\\shopypall_base\\storage\\app',
+>>>>>>> 5e181760454718a56036af06f046628a2377c98a
       ),
       'public' => 
       array (
         'driver' => 'local',
+<<<<<<< HEAD
         'root' => 'F:\\xampp\\htdocs\\shopypall_base\\public\\images/media',
         'url' => 'http://127.0.0.1:8000//uploadimage',
+=======
+        'root' => 'C:\\xampp\\htdocs\\shopypall_base\\public\\images/media',
+        'url' => 'http://shopypall.test/uploadimage',
+>>>>>>> 5e181760454718a56036af06f046628a2377c98a
         'visibility' => 'public',
       ),
       's3' => 
@@ -551,13 +611,21 @@
       'single' => 
       array (
         'driver' => 'single',
+<<<<<<< HEAD
         'path' => 'F:\\xampp\\htdocs\\shopypall_base\\storage\\logs/laravel.log',
+=======
+        'path' => 'C:\\xampp\\htdocs\\shopypall_base\\storage\\logs/laravel.log',
+>>>>>>> 5e181760454718a56036af06f046628a2377c98a
         'level' => 'debug',
       ),
       'daily' => 
       array (
         'driver' => 'daily',
+<<<<<<< HEAD
         'path' => 'F:\\xampp\\htdocs\\shopypall_base\\storage\\logs/laravel.log',
+=======
+        'path' => 'C:\\xampp\\htdocs\\shopypall_base\\storage\\logs/laravel.log',
+>>>>>>> 5e181760454718a56036af06f046628a2377c98a
         'level' => 'debug',
         'days' => 7,
       ),
@@ -593,7 +661,11 @@
   'mail' => 
   array (
     'driver' => 'smtp',
+<<<<<<< HEAD
     'host' => 'smtp.transip.email',
+=======
+    'host' => 'p2gmanagement.xyz',
+>>>>>>> 5e181760454718a56036af06f046628a2377c98a
     'port' => '465',
     'from' => 
     array (
@@ -601,15 +673,24 @@
       'name' => 'Example',
     ),
     'encryption' => 'ssl',
+<<<<<<< HEAD
     'username' => 'noreply@afspraakloket.nl',
     'password' => 'AArm/200214997',
+=======
+    'username' => 'support@p2gmanagement.xyz',
+    'password' => 'support@p2g',
+>>>>>>> 5e181760454718a56036af06f046628a2377c98a
     'sendmail' => '/usr/sbin/sendmail -bs',
     'markdown' => 
     array (
       'theme' => 'default',
       'paths' => 
       array (
+<<<<<<< HEAD
         0 => 'F:\\xampp\\htdocs\\shopypall_base\\resources\\views/vendor/mail',
+=======
+        0 => 'C:\\xampp\\htdocs\\shopypall_base\\resources\\views/vendor/mail',
+>>>>>>> 5e181760454718a56036af06f046628a2377c98a
       ),
     ),
   ),
@@ -739,7 +820,11 @@
     'lifetime' => 600,
     'expire_on_close' => false,
     'encrypt' => false,
+<<<<<<< HEAD
     'files' => 'F:\\xampp\\htdocs\\shopypall_base\\storage\\framework/sessions',
+=======
+    'files' => 'C:\\xampp\\htdocs\\shopypall_base\\storage\\framework/sessions',
+>>>>>>> 5e181760454718a56036af06f046628a2377c98a
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -759,9 +844,15 @@
   array (
     'paths' => 
     array (
+<<<<<<< HEAD
       0 => 'F:\\xampp\\htdocs\\shopypall_base\\resources\\views',
     ),
     'compiled' => 'F:\\xampp\\htdocs\\shopypall_base\\storage\\framework\\views',
+=======
+      0 => 'C:\\xampp\\htdocs\\shopypall_base\\resources\\views',
+    ),
+    'compiled' => 'C:\\xampp\\htdocs\\shopypall_base\\storage\\framework\\views',
+>>>>>>> 5e181760454718a56036af06f046628a2377c98a
   ),
   'debug-server' => 
   array (
@@ -772,6 +863,7 @@
     'path' => '/database/seeds',
     'chunk_size' => 500,
   ),
+<<<<<<< HEAD
   'generators' => 
   array (
     'config' => 
@@ -790,6 +882,8 @@
       'view_target_path' => 'F:\\xampp\\htdocs\\shopypall_base\\resources/views',
     ),
   ),
+=======
+>>>>>>> 5e181760454718a56036af06f046628a2377c98a
   'trustedproxy' => 
   array (
     'proxies' => NULL,
@@ -811,7 +905,11 @@
     'memory_limit' => '128M',
     'src_dirs' => 
     array (
+<<<<<<< HEAD
       0 => 'F:\\xampp\\htdocs\\shopypall_base\\public',
+=======
+      0 => 'C:\\xampp\\htdocs\\shopypall_base\\public',
+>>>>>>> 5e181760454718a56036af06f046628a2377c98a
     ),
     'host' => '',
     'pattern' => '^(.*){parameters}\\.(jpg|jpeg|png|gif|JPG|JPEG|PNG|GIF)$',
@@ -832,6 +930,10 @@
     'proxy_cache' => true,
     'proxy_cache_filesystem' => NULL,
     'proxy_cache_expiration' => 1440,
+<<<<<<< HEAD
     'proxy_tmp_path' => 'C:\\Users\\FINETR~1\\AppData\\Local\\Temp',
+=======
+    'proxy_tmp_path' => 'C:\\Users\\attau\\AppData\\Local\\Temp',
+>>>>>>> 5e181760454718a56036af06f046628a2377c98a
   ),
 );
