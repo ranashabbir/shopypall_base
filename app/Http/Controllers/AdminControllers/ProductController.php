@@ -84,12 +84,14 @@ class ProductController extends Controller
         $title = array('pageTitle' => Lang::get("labels.Products"));
         $subCategories = $this->category->allcategories($language_id);
         $products = $this->products->paginator($request);
+        // dd($products);
         $results['products'] = $products;
         $results['currency'] = $this->myVarsetting->getSetting();
         $results['units'] = $this->myVarsetting->getUnits();
         $results['subCategories'] = $subCategories;
         $currentTime = array('currentTime' => time());
         $result['commonContent'] = $this->Setting->commonContent();
+        // dd($results);
         return view("admin.products.index", $title)->with('result', $result)->with('results', $results)->with('categories_id', $categories_id)->with('product', $product);
 
     }
@@ -172,7 +174,7 @@ class ProductController extends Controller
         $result = $this->products->edit($request);
         //dd($result['categories_array']);
         $categories = $this->category->recursivecategories($request);
-
+        // dd($result);
         $parent_id = $result['categories_array'];
         $option = '<ul class="list-group list-group-root well">';
 

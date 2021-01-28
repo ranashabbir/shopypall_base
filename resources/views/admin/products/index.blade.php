@@ -102,94 +102,94 @@
             <table class="table table-hover h5_heading">
                 <thead>
                     <tr>
-                        <th></th>
+                        <th><div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+
+                                </label>
+                            </div>
+                            {{-- <span class="disply__non"></span></th> --}}
                         <th>
-                            <span class="disply__non">main_img-img</span>
-                            Products
+                            Product
                         </th>
-                        <th>Catagory</th>
-                        <th>Name</th>
-                        <th>info</th>
-                        <th>modified date</th>
+                        <th>@sortablelink('categories_name', trans('labels.Category') )</th>
+                        <th>@sortablelink('products_name', trans('labels.Name') )</th>
+                        <th>{{ trans('labels.Additional info') }}</th>
+                        <th>@sortablelink('created_at', trans('labels.ModifiedDate') )</th>
 
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
+                    @if(count($results['products'])>0)
+                        @php  $resultsProduct = $results['products']->unique('products_id')->keyBy('products_id');  @endphp
+                        @foreach ($resultsProduct as  $key=>$product)
+                        <tr>
+                            <td>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+    
+                                    </label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="row">
+                                    <a href="{{url('admin/products/edit')}}/{{ $product->products_id }}">
+                                        <div class="col-lg-3 col-md-3 col-6">
+                                            <img src="{{asset($product->path)}}"
+                                                alt="" class="table___img">
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-6 second___div">
+                                            <h6 style="font-weight: bold;">{{ $product->products_name }}</h6>
+                                        </div>
+                                    </a>
+                                </div>
+                            </td>
+                            <td>{{ $product->categories_name }}</td>
+                            <td>{{ $product->products_name }} @if(!empty($product->products_model)) ( {{ $product->products_model }} ) @endif</td>
+                            <td>
+                                <strong>{{ trans('labels.Product Type') }}:</strong>
+                                @if($product->products_type==0)
+                                    {{ trans('labels.Simple') }}
+                                @elseif($product->products_type==1)
+                                    {{ trans('labels.Variable') }}
+                                @elseif($product->products_type==2)
+                                    {{ trans('labels.External') }}
+                                @endif
+                                <br>
+                                @if(!empty($product->manufacturers_name))
+                                    <strong>{{ trans('labels.Manufacturer') }}:</strong> {{ $product->manufacturers_name }}<br>
+                                @endif
+                                <strong>{{ trans('labels.Price') }}: </strong>   
+                                @if(!empty($result['commonContent']['currency']->symbol_left)) {{$result['commonContent']['currency']->symbol_left}} @endif {{ $product->products_price }} @if(!empty($result['commonContent']['currency']->symbol_right)) {{$result['commonContent']['currency']->symbol_right}} @endif
+                                <br>
+                                <strong>{{ trans('labels.Weight') }}: </strong>  {{ $product->products_weight }}{{ $product->products_weight_unit }}<br>
+                                <strong>{{ trans('labels.Viewed') }}: </strong>  {{ $product->products_viewed }}<br>
+                                @if(!empty($product->specials_id))
+                                    <strong class="badge bg-light-blue">{{ trans('labels.Special Product') }}</strong><br>
+                                    <strong>{{ trans('labels.SpecialPrice') }}: </strong>  {{ $product->specials_products_price }}<br>
 
-                                </label>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="row">
-                                <div class="col-lg-3 col-md-3 col-6">
-                                    <img src="https://image.shutterstock.com/image-vector/picture-icon-vector-260nw-415924633.jpg"
-                                        alt="" class="table___img">
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-6 second___div">
-                                    <h6 style="font-weight: bold;">short sive tshirts</h6>
-                                </div>
-                            </div>
-                        </td>
-                        <td>abc</td>
-                        <td>de</td>
-                        <td>info</td>
-                        <td>12/1/2021</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                    @if(($product->specials_id) !== null)
+                                        @php  $mytime = Carbon\Carbon::now()  @endphp
+                                        <strong>{{ trans('labels.ExpiryDate') }}: </strong>
 
-                                </label>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="row">
-                                <div class="col-lg-3 col-md-3 col-6">
-                                    <img src="https://image.shutterstock.com/image-vector/picture-icon-vector-260nw-415924633.jpg"
-                                        alt="" class="table___img">
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-6 second___div">
-                                    <h6 style="font-weight: bold;">short sive tshirt</h6>
-                                </div>
-                            </div>
-                        </td>
-                        <td>abc</td>
-                        <td>de</td>
-                        <td>info</td>
-                        <td>12/1/2021</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-
-                                </label>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="row">
-                                <div class="col-lg-3 col-md-3 col-6">
-                                    <img src="https://image.shutterstock.com/image-vector/picture-icon-vector-260nw-415924633.jpg"
-                                        alt="" class="table___img">
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-6 second___div">
-                                    <h6 style="font-weight: bold;">short sive tshirt</h6>
-                                </div>
-                            </div>
-                        </td>
-                        <td>abc</td>
-                        <td>de</td>
-                        <td>info</td>
-                        <td>12/1/2021</td>
-                    </tr>
+                                        {{-- @if($product->expires_date > $mytime->toDateTimeString()) --}}
+                                            {{  date('d-m-Y', $product->expires_date) }}
+                                        {{-- @else
+                                            <strong class="badge bg-red">{{ trans('labels.Expired') }}</strong>
+                                        @endif --}}
+                                        <br>
+                                    @endif
+                                @endif
+                            </td>
+                            <td>{{ $product->productupdate }}</td>
+                        </tr>
+                        @endforeach
+                    @else
+                        <tr>
+                            <td colspan="5">{{ trans('labels.NoRecordFound') }}</td>
+                        </tr>
+                    @endif
                 </tbody>
             </table>
 

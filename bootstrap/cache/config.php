@@ -33,7 +33,7 @@
     'timezone' => 'UTC',
     'locale' => 'en',
     'fallback_locale' => 'en',
-    'key' => 'base64:U+bAENJ3cry5p8EGS9JivM+3LvJtVkOQ+/xdc47Eggk=',
+    'key' => 'base64:pZrB140V5w95kz18r+74nNxV0CjeacO1FEIVO9Gatek=',
     'cipher' => 'AES-256-CBC',
     'providers' => 
     array (
@@ -444,8 +444,8 @@
         'host' => '127.0.0.1',
         'port' => '3306',
         'database' => 'shopypall',
-        'username' => 'user@atta',
-        'password' => 'user@atta',
+        'username' => 'shopypall',
+        'password' => 'shopypall',
         'unix_socket' => '',
         'charset' => 'utf8',
         'collation' => 'utf8_unicode_ci',
@@ -460,8 +460,8 @@
         'host' => '127.0.0.1',
         'port' => '3306',
         'database' => 'shopypall',
-        'username' => 'user@atta',
-        'password' => 'user@atta',
+        'username' => 'shopypall',
+        'password' => 'shopypall',
         'charset' => 'utf8',
         'prefix' => '',
         'schema' => 'public',
@@ -473,8 +473,8 @@
         'host' => '127.0.0.1',
         'port' => '3306',
         'database' => 'shopypall',
-        'username' => 'user@atta',
-        'password' => 'user@atta',
+        'username' => 'shopypall',
+        'password' => 'shopypall',
         'charset' => 'utf8',
         'prefix' => '',
       ),
@@ -772,6 +772,24 @@
     'path' => '/database/seeds',
     'chunk_size' => 500,
   ),
+  'generators' => 
+  array (
+    'config' => 
+    array (
+      'model_template_path' => 'C:\\xampp\\htdocs\\shopypall_base\\vendor/oscarafdev/laravel-4-generators/src/Way/Generators/Templates/model.txt',
+      'scaffold_model_template_path' => 'C:\\xampp\\htdocs\\shopypall_base\\vendor/oscarafdev/laravel-4-generators/src/Way/Generators/Templates/scaffolding/model.txt',
+      'controller_template_path' => 'C:\\xampp\\htdocs\\shopypall_base\\vendor/oscarafdev/laravel-4-generators/src/Way/Generators/Templates/controller.txt',
+      'scaffold_controller_template_path' => 'C:\\xampp\\htdocs\\shopypall_base\\vendor/oscarafdev/laravel-4-generators/src/Way/Generators/Templates/scaffolding/controller.txt',
+      'migration_template_path' => 'C:\\xampp\\htdocs\\shopypall_base\\vendor/oscarafdev/laravel-4-generators/src/Way/Generators/Templates/migration.txt',
+      'seed_template_path' => 'C:\\xampp\\htdocs\\shopypall_base\\vendor/oscarafdev/laravel-4-generators/src/Way/Generators/Templates/seed.txt',
+      'view_template_path' => 'C:\\xampp\\htdocs\\shopypall_base\\vendor/oscarafdev/laravel-4-generators/src/Way/Generators/Templates/view.txt',
+      'model_target_path' => 'C:\\xampp\\htdocs\\shopypall_base\\app',
+      'controller_target_path' => 'C:\\xampp\\htdocs\\shopypall_base\\app\\Http/Controllers',
+      'migration_target_path' => 'C:\\xampp\\htdocs\\shopypall_base\\database/migrations',
+      'seed_target_path' => 'C:\\xampp\\htdocs\\shopypall_base\\database/seeds',
+      'view_target_path' => 'C:\\xampp\\htdocs\\shopypall_base\\resources/views',
+    ),
+  ),
   'trustedproxy' => 
   array (
     'proxies' => NULL,
@@ -814,6 +832,6 @@
     'proxy_cache' => true,
     'proxy_cache_filesystem' => NULL,
     'proxy_cache_expiration' => 1440,
-    'proxy_tmp_path' => 'C:\\Users\\attau\\AppData\\Local\\Temp',
+    'proxy_tmp_path' => 'C:\\Users\\GAM3R\\AppData\\Local\\Temp',
   ),
 );

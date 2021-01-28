@@ -20,7 +20,7 @@
         <div class="row">
             <div class="col-md-6 col-6 mx-auto">
                 <h3 class="box-title"><i class="fa fa-arrow-left back__arrow" style="position:relative;right:2%;"
-                        aria-hidden="true"></i><span class="sapan_cls"></span> Short Sleeve Tshit <span
+                        aria-hidden="true"></i><span class="sapan_cls"></span> {{$result['description'][1]['products_name']}} <span
                         style="background-color:rgba(164,232,242,1);padding:4px 12px;border-radius:18px;font-size:15px;">Draft</span>
                 </h3>
             </div>
@@ -51,23 +51,32 @@
         <br />
         <div class="row">
             <div class="col-lg-7 col-md-7 col-12 mx-auto edit_page__main">
+                @foreach($result['description'] as $key=>$description_data)
                 <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label"><span
-                            style="font-weight: normal;">Title</span> </label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="title..">
+                    <label for="exampleFormControlInput1" class="form-label"><span style="font-weight: normal;">{{ trans('labels.ProductName') }} ({{ $description_data['language_name'] }})</span> </label>
+                    <input type="text" name="products_name_<?=$description_data['languages_id']?>" class="form-control" value="{{$description_data['products_name']}}" id="exampleFormControlInput1" placeholder="title..">
+                    <span class="help-block" style="font-weight: normal;font-size: 11px;margin-bottom: 0;">{{ trans('labels.EnterProductNameIn') }} {{ $description_data['language_name'] }} </span><span class="help-block hidden">{{ trans('labels.textRequiredFieldMessage') }}</span>
                 </div><br />
                 <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label"><span
-                            style="font-weight: normal;">Description</span></label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        style="font-weight: normal;">{{ trans('labels.Description') }} ({{ $description_data['language_name'] }})</span></label>
+                        <textarea id="editor<?=$description_data['languages_id']?>" name="products_description_<?=$description_data['languages_id']?>" class="form-control" rows="2">
+                            {{stripslashes($description_data['products_description'])}}
+                        </textarea>
+                        <span class="help-block" style="font-weight: normal;font-size: 11px;margin-bottom: 0;">
+                            {{ trans('labels.EnterProductDetailIn') }} {{ $description_data['language_name'] }}
+                        </span>
                 </div><br />
+                @endforeach
             </div>
-            <div class="col-lg-4 col-md-4 col-12 mx-auto edit_page__main1">
-                <h5>Product status</h5>
+            <div class="col-lg-4 col-md-4 col-12 mx-auto edit_page__main1" style="margin-bottom: 20px;">
+                <h5>{{ trans('labels.Status') }}</h5>
                 <select class="form-select draft___prod" aria-label="Default select example">
-                    <option selected>Draft</option>
+                    <option value="1" @if($result['product'][0]->products_status==1) selected @endif >{{ trans('labels.Active') }}</option>
+                    <option value="0" @if($result['product'][0]->products_status==0) selected @endif>{{ trans('labels.Inactive') }}</option>
+                    {{-- <option selected>Draft</option>
                     <option value="1">active</option>
-                    <option value="2">draft</option>
+                    <option value="2">draft</option> --}}
 
                 </select>
 
@@ -79,6 +88,49 @@
                     <p>Online Store</p> <a style="margin-left:170px;" href="">Selected</a>
                 </span>
                 <a href="">Schulde availability</a>
+            </div>
+            
+            <div class="col-lg-4 col-md-4 col-12 mx-auto edit_page__main1" style="margin-bottom: 20px;">
+                <h4>Organization</h4>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label"><span style="font-weight:normal;"> Product type </span>
+                    </label>
+                    <select class="form-control field-validate prodcust-type" name="products_type" onChange="prodcust_type();">
+                        <option value="">{{ trans('labels.Choose Type') }}</option>
+                        <option value="0" @if($result['product'][0]->products_type==0) selected @endif>{{ trans('labels.Simple') }}</option>
+                        <option value="1" @if($result['product'][0]->products_type==1) selected @endif>{{ trans('labels.Variable') }}</option>
+                        <option value="2" @if($result['product'][0]->products_type==2) selected @endif>{{ trans('labels.External') }}</option>
+                    </select><span class="help-block" style="font-weight: normal;font-size: 11px;margin-bottom: 0;">
+                        {{ trans('labels.Product Type Text') }}.</span>
+                    {{-- <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="types..."> --}}
+                </div>
+                <br />
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label"><span style="font-weight:normal;">
+                            Vendor
+                        </span></label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="ifull">
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-12 mx-auto edit_page__main1">
+                <h4>COLLECTIONS</h4>
+                <div class="searc_______option" style="width:97%;">
+                    <div class="form-group">
+                        <div class="icon-addon addon-md">
+                            <input type="text" placeholder="search for collections" class="form-control" id="email">
+                            <label for="search" class="glyphicon glyphicon-search" rel="tooltip"
+                                title="email"></label>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label"><span style="font-weight:normal;">
+                            Tages
+                        </span></label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1"
+                        placeholder="vintage,cotton,summer">
+                </div>
             </div>
         </div>
         <br />
@@ -95,30 +147,15 @@
                 </span>
                 <br />
                 <div class="edit__upload_file">
+                    
                     <i class="fa fa-arrow-circle-up" style="font-size:40px;" aria-hidden="true"></i>
                     <button>Add file</button>
                     <p>or drop files to upload</p>
                 </div>
 
             </div>
-            <div class="col-lg-4 col-md-4 col-12 mx-auto edit_page__main1">
-                <h4>Organization</h4>
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label"><span style="font-weight:normal;">
-                            Product type
-                        </span></label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="types...">
-                </div>
-                <br />
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label"><span style="font-weight:normal;">
-                            Vendor
-                        </span></label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="ifull">
-                </div>
-
-            </div>
-
+            
+        </div>
             <div class="row ">
                 <div class="col-lg-7 col-md-7 col-12 mx-auto edit_page_main_2">
                     <span style="display:flex;">
@@ -259,26 +296,7 @@
                         </table>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-12 mx-auto edit_page_main_3">
-                    <h4>COLLECTIONS</h4>
-                    <div class="searc_______option" style="width:97%;">
-                        <div class="form-group">
-                            <div class="icon-addon addon-md">
-                                <input type="text" placeholder="search for collections" class="form-control" id="email">
-                                <label for="search" class="glyphicon glyphicon-search" rel="tooltip"
-                                    title="email"></label>
-                            </div>
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label"><span style="font-weight:normal;">
-                                Tages
-                            </span></label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1"
-                            placeholder="vintage,cotton,summer">
-                    </div>
-                </div>
+                
             </div>
             <hr class="edit_hr">
             <span>
@@ -486,7 +504,7 @@
             </div>
         </div>
         <!-- <=================Add to cart page start=======> -->
-        <br />
+        {{-- <br />
         <div class="container" style="margin-top: 3%;">
             <div class="row">
                 <div class="col-lg-5 col-md-5 col-12 mx-auto">
@@ -520,8 +538,8 @@
                 </div>
             </div>
         </div>
-        <br />
-        <div class="container-fluid" style="margin-top: 5%;">
+        <br /> --}}
+        {{-- <div class="container-fluid" style="margin-top: 5%;">
             <div class="row">
                 <div class="col-lg-5 col-md-5 col-12 mx-auto">
                     <h4>Quick links</h4>
@@ -620,7 +638,7 @@
             <hr class="footer_hr">
             <p style="float:right; margin-right:15%;">© 2021, IfuFull Powered by Shopify</p>
         </div>
-        <br />
+        <br /> --}}
     </section>
     <!-- /.content -->
 </div>
