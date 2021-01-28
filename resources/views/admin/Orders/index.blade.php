@@ -38,8 +38,11 @@
                                 </div>
                             </div>
                             <div class="row">
+								<div class="col-xs-12" id="filter-btn-row">
+									
+								</div>
                                 <div class="col-xs-12">
-                                    <table id="example1" class="table table-bordered table-striped">
+                                    <table id="example1" class="table table-bordered table-striped yajra-datatable">
                                         <thead>
                                         <tr>
                                             <th>{{ trans('labels.ID') }}</th>
@@ -135,10 +138,59 @@
                 </div>
             </div>
 
+			<aside id="morefilter-aside">
+				<h3>More filters</h3>
+				<!-- <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+				<div class="accordion" id="accordionExample">
+				  <div class="card">
+					<div class="card-header" id="headingOne">
+					  <h2 class="mb-0">
+						<button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+						  Delivery Method
+						  <span class="caret"></span>
+						</button>
+					  </h2>
+					</div>
+
+					<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+					  <div class="card-body">
+						<ul class="" >
+							<li><label class="radio-inline"><input type="radio" name="optradio">Cash On Delivery</label></li>
+							<li><label class="radio-inline"><input type="radio" name="optradio">Cash On Delivery</label></li>
+						</ul>
+					  </div>
+					</div>
+				  </div>
+				  <div class="card">
+					<div class="card-header" id="headingTwo">
+					  <h2 class="mb-0">
+						<button class="btn btn-default collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+						  Order Status
+						  <span class="caret"></span>
+						</button>
+					  </h2>
+					</div>
+					<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+					  <div class="card-body">
+						<ul class="" >
+							<li><label class="radio-inline"><input type="radio" name="optradio">All</label></li>
+							<li><label class="radio-inline"><input type="radio" name="optradio">Pending</label></li>
+							<li><label class="radio-inline"><input type="radio" name="optradio">In Process</label></li>
+						</ul>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			</aside>
             <!-- Main row -->
 
             <!-- /.row -->
         </section>
         <!-- /.content -->
     </div>
+	
+<script type="text/javascript">
+  
+</script>
+
 @endsection

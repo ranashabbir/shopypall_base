@@ -1,0 +1,84 @@
+#example1_filter label span{
+	position: absolute;
+    margin: 7px;
+}
+#example1_filter .dropdown{
+	float: right;
+    margin-top: 18px;
+}
+#example1_filter .btn-default{
+	background-color: #fff;
+}
+#example1_filter label:first-child{
+	width: 20%;
+}
+#example1_filter #more-filters{
+	margin-top: -4px;
+}
+#example1_length select{
+	padding: 6px 2px;
+}
+.dropdown-menu>li{
+	padding: 0px 10px;
+}
+.dropdown-menu>li>label {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: 400;
+    line-height: 1.42857143;
+    color: #333;
+    white-space: nowrap;
+}
+
+#filter-btn-row{
+	margin-bottom: 10px;
+}
+#filter-btn-row .btn-group{
+	width: 100%;
+	border-bottom: 1px solid #ececec;
+}
+#filter-btn-row .btn-default{
+	background-color: #fff;
+	border: none;
+}
+#filter-btn-row .btn.active, .btn:active{
+	border-bottom: 3px solid #0747a6;
+	webkit-box-shadow: none; 
+    box-shadow: none;
+}
+#filter-btn-row .btn:focus{
+	border: none !important;
+	border-color: transparent;
+}
+
+aside#morefilter-aside{
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: -25px;
+  width: 0%;
+  padding: 10px;
+  z-index: 99999;
+  box-shadow: var(--p-modal-shadow,0 31px 41px 0 rgba(32,42,53,.2),0 2px 16px 0 rgba(32,42,54,.08));
+}
+aside#morefilter-aside.active{
+	width: 20%;
+}
+aside#morefilter-aside accordionExample{
+	border-top: 1px solid #ececec;
+}
+aside#morefilter-aside .btn-default{
+	background: #fff;
+	width: 100%;
+	border: none;
+	font-size: 18px;
+	text-align: left;
+}
+aside#morefilter-aside .card{
+	border-bottom: 1px solid #ececec;
+}
+aside#morefilter-aside li{
+	list-style: none;
+}
