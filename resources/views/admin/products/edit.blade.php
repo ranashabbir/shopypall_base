@@ -31,8 +31,8 @@
                     <button class="Dublicate___buton">preview</button>
                     <div class="btn-group grop___btn_first" role="group">
                         <div class="btn-group" role="group">
-                            <button type="button" disabled>
-                                <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                            <button type="button " disabled>
+                                <i class="fa fa-chevron-left " aria-hidden="true"></i>
 
                             </button>
 
@@ -448,11 +448,183 @@
                 </div>
             </div>
 
+            <!-- <=====================Add to cart modal===============> -->
 
+            <div class="modal fade " id="addtocart" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal_for_right" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" style="margin-top:1%" id="exampleModalLongTitle">JUST ADDED TO YOUR
+                                CART
+                            </h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true"><i class="fa fa-times"
+                                        style="font-size:27px;font-weight:normal;" aria-hidden="true"></i></span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div style="display:flex;">
+                                <figure>
+                                    <img src="https://cdn.shopify.com/s/files/1/0516/5160/8762/products/w_200x.png?v=1611565673"
+                                        alt="" style="width:50px;height:57px;" />
+                                </figure>
+                                <h4 style="margin-left:12px;">Short Sleeve Tshit</h4>
+
+                            </div>
+                            <p class="modal___color_text">Color:blue</p>
+                            <p class="modal_quantity_text">Qty:1</p>
+                            <br />
+                            <button class="modal__view_button">VIEW CART<span>(3)</span></button>
+                            <div style="display:flex;justify-content:center;">
+                                <a href="" style="margin-top:2%;">Continue shopping</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- <=================Add to cart page start=======> -->
+        <br />
+        <div class="container" style="margin-top: 3%;">
+            <div class="row">
+                <div class="col-lg-5 col-md-5 col-12 mx-auto">
+                    <img src="https://cdn.shopify.com/s/files/1/0516/5160/8762/products/w_1024x1024@2x.png?v=1611565673"
+                        alt="" class="add_to_cart_image_product" />
+                </div>
+                <div class="col-lg-7 col-md-7 col-12 mx-auto">
+                    <h1 style="font-weight:bold;">Short Sleeve Tshit</h1>
+                    <h3>Rs.1,000.00</h3>
+                    <p>Color</p>
+                    <select class="select__color">
+                        <option value="">blue</option>
+                        <option value="">blue</option>
+                    </select>
+                    <br />
+                    <button class="add__to__cartBtn" data-toggle="modal" data-target="#addtocart">ADD TO
+                        CART</button>
+                    <br />
+                    <button class="buy__it_buton">BUY IT NOW</button>
+                    <br />
+                    <p style="margin-top:10%;">Test Product</p>
+                    <br />
+                    <button class="share__buttonsss"><i class="fa fa-facebook-official" aria-hidden="true"
+                            style="color:#3b5998;"></i>
+                        SHARE</button>
+                    <button class="share__buttonsss"><i class="fa fa-twitter" aria-hidden="true"
+                            style="color:#00aced;"></i> TWEET</button>
+                    <button class="share__buttonsss"><i class="fa fa-pinterest" aria-hidden="true"
+                            style="color:#d5494f"></i>
+                        PINIT</button>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="container-fluid" style="margin-top: 5%;">
+            <div class="row">
+                <div class="col-lg-5 col-md-5 col-12 mx-auto">
+                    <h4>Quick links</h4>
+                    <p>Search</p>
+                </div>
+                <div class="col-lg-7 col-md-7 col-12 mx-auto">
+                    <h4>Newsletter</h4>
+                    <div class="input-group" style="width:77%">
+                        <input type="email" class="form-control" placeholder="email address">
+                        <button type="" class="subcribe___btn">SUBCRIBE</button>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <hr class="footer_hr">
+            <p style="float:right; margin-right:15%;">© 2021, IfuFull Powered by Shopify</p>
+        </div>
+        <br />
+
+        <div class="container">
+            <h1 class="text-center my-2">Your cart</h1>
+            <p class="text-center">Continue shopping</p>
+            <div style="overflow-x:auto;">
+                <table class="table tabel___width__cs">
+                    <thead>
+                        <tr>
+                            <th>
+                            </th>
+                            <th>
+                                PRODUCT</th>
+                            <th>PRICE</th>
+                            <th>QUANTITY</th>
+                            <th>TOTAL</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <img src="https://cdn.shopify.com/s/files/1/0516/5160/8762/products/w_x190.png?v=1611565673"
+                                    alt="" style="width=70px;height:70px;" />
+                            </td>
+                            <td>
+                                <div style="margin-right:3%;">
+                                    <h5>Short Sleeve Tshit</h5>
+                                    <p>Color:blue</p>
+                                    <a href="">Remove</a>
+                                </div>
+                            </td>
+                            <td>
+                                <h5>Rs:1000.00</h5>
+                            </td>
+                            <td>
+                                <input type="number" class="product___price-num" />
+                            </td>
+                            <td>
+                                <h4 style="margin-right:15px;">Rs.4,000.00
+                                </h4>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <hr class="footer_hr">
+            <div class="col-4" style="float:right;margin-right:21%;">
+                <div class="row">
+                    <div class="col-md-4 col-6">
+                        <h4>Subtotal </h4>
+                    </div>
+                    <div class="col-md-8 col-6">
+                        <h5 class="mt-2" style="margin-left:15px;">Rs.7,000.00 PKR</h5>
+
+                    </div>
+                </div>
+                <p>Taxes and shipping calculated at checkout</p>
+                <button class="btn__checkouttt">CHECK OUT</button>
+            </div>
+        </div>
+        <br />
+        <div class="container-fluid" style="margin-top: 5%;">
+            <div class="row">
+                <div class="col-lg-5 col-md-5 col-12 mx-auto">
+                    <h4>Quick links</h4>
+                    <p>Search</p>
+                </div>
+                <div class="col-lg-7 col-md-7 col-12 mx-auto">
+                    <h4>Newsletter</h4>
+                    <div class="input-group" style="width:77%">
+                        <input type="email" class="form-control" placeholder="email address">
+
+                        <button type="" class="subcribe___btn">SUBCRIBE</button>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <hr class="footer_hr">
+            <p style="float:right; margin-right:15%;">© 2021, IfuFull Powered by Shopify</p>
+        </div>
+        <br />
     </section>
     <!-- /.content -->
 </div>
-<script src="{!! asset('admin/plugins/jQuery/jQuery-2.2.0.min.js') !!}"></script>
+<script src=" {!! asset('admin/plugins/jQuery/jQuery-2.2.0.min.js') !!}"></script>
 <script type="text/javascript">
 $(function() {
 
