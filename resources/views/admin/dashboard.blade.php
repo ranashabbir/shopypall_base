@@ -22,9 +22,9 @@
               <!-- /.box-header -->
               <div class="box-body padding-0">
                 <h3>Total Sales</h3>
-                <h4>6</h4>
+                <h4>{{count($result['completed_orders'])}}</h4>
                 <hr/>
-                <p>Last 30 Days <a class="float-right" href="">View Report</a></p>
+                <p>Last 30 Days <a class="float-right" href="{{ URL::to('admin/orders/display')}}">View Report</a></p>
                 <!-- /.users-list -->
               </div>
               <!-- /.box-body -->
@@ -37,9 +37,21 @@
               <!-- /.box-header -->
               <div class="box-body padding-0">
                 <h3>Sale Amount</h3>
-                <h4>$ 450</h4>
+                <h4>
+                  @if(count($result['total_sales_currency_wise']) > 0)
+                  @foreach($result['total_sales_currency_wise'] as $key => $sales)
+                  $ {{ number_format($sales->sale,2) }} 
+
+                  @if($key !== count($result['total_sales_currency_wise']))
+                  <br />
+                  @endif
+                  @endforeach
+                  @else
+                  0
+                  @endif
+                </h4>
                 <hr/>
-                <p>Last 30 Days <a class="float-right" href="">View Report</a></p>
+                <p>Last 30 Days <a class="float-right" href="{{ URL::to('admin/orders/display')}}">View Report</a></p>
                 <!-- /.users-list -->
               </div>
               <!-- /.box-body -->
@@ -57,101 +69,53 @@
             <table class="table table-hover dt-responsive" cellspacing="0" width="100%">
 
                 <thead>
-
                   <tr>
 
-
-
-                    <th>Order Number</th>
-
-                    <th>Order Date</th>
+                    <th>{{ trans('labels.OrderID') }}</th>
+                    <th>{{ trans('labels.CustomerName') }}</th>
+                    <th>{{ trans('labels.TotalPrice') }}</th>
+                    <th>{{ trans('labels.Status') }} </th>
 
                   </tr>
-
-                  
+                  @if(count($result['orders'])>0)
+                  @foreach($result['orders'] as $total_orders)
+                  @foreach($total_orders as $key=>$orders)
+                  @if($key<=10)
                   <tr>
-
-                    <td>R4hy1602148846</td>
-
-                    <td>2020-10-08</td>
-
+                    <td><a href="{{ URL::to('admin/orders/vieworder/') }}/{{ $orders->orders_id }}" data-toggle="tooltip" data-placement="bottom" title="Go to detail">{{ $orders->orders_id }}</a></td>
+                    <td>{{ $orders->customers_name }}</td>
                     <td>
+                      @if(!empty($result['commonContent']['currency']->symbol_left)) {{$result['commonContent']['currency']->symbol_left}} @endif {{ floatval($orders->total_price) }} @if(!empty($result['commonContent']['currency']->symbol_right)) {{$result['commonContent']['currency']->symbol_right}} @endif
+                    </td>
+                    <td>
+                      @if($orders->orders_status_id==1)
+                      <span class="label label-warning"></span>
+                      @elseif($orders->orders_status_id==2)
+                      <span class="label label-success">
+                        @elseif($orders->orders_status_id==3)
+                      </span>  <span class="label label-danger"></span>
+                      @else
+                      <span class="label label-primary">
+                        @endif
+                        {{ $orders->orders_status }}
+                      </span>
 
-                      <div class="action-list"><a href="//shopypall.com/store/andy/admin/order/96/show"><i class="glyphicon glyphicon-eye-open"></i> Details</a>
-
-                      </div>
 
                     </td>
+                  </tr>
+                  @endif
+                  @endforeach
+                  @endforeach
+
+                  @else
+                  <tr>
+                    <td colspan="4">{{ trans('labels.noOrderPlaced') }}</td>
 
                   </tr>
+                  @endif
 
                   
-                  <tr>
-
-                    <td>kGDP1602146872</td>
-
-                    <td>2020-10-08</td>
-
-                    <td>
-
-                      <div class="action-list"><a href="//shopypall.com/store/andy/admin/order/95/show"><i class="glyphicon glyphicon-eye-open"></i> Details</a>
-
-                      </div>
-
-                    </td>
-
-                  </tr>
-
-                  
-                  <tr>
-
-                    <td>5bZQ1602146569</td>
-
-                    <td>2020-10-08</td>
-
-                    <td>
-
-                      <div class="action-list"><a href="//shopypall.com/store/andy/admin/order/94/show"><i class="glyphicon glyphicon-eye-open"></i> Details</a>
-
-                      </div>
-
-                    </td>
-
-                  </tr>
-
-                  
-                  <tr>
-
-                    <td>zCD21602146447</td>
-
-                    <td>2020-10-08</td>
-
-                    <td>
-
-                      <div class="action-list"><a href="//shopypall.com/store/andy/admin/order/93/show"><i class="glyphicon glyphicon-eye-open"></i> Details</a>
-
-                      </div>
-
-                    </td>
-
-                  </tr>
-
-                  
-                  <tr>
-
-                    <td>Jf8I1602146400</td>
-
-                    <td>2020-10-08</td>
-
-                    <td>
-
-                      <div class="action-list"><a href="//shopypall.com/store/andy/admin/order/92/show"><i class="glyphicon glyphicon-eye-open"></i> Details</a>
-
-                      </div>
-
-                    </td>
-
-                  </tr>
+                   
 
                   
                 </thead>
@@ -169,26 +133,68 @@
 
           <!-- /.box-header -->
           <div class="box-body padding-0">
+            <h3 class="box-title"> {{ trans('labels.RecentlyAddedProducts') }}</h3>
             <br/>
             <div class="row">
-              <div class="form-group col-md-6">
-                <select id="duration" name="duration" class="form-control">
-                    
-                    <option value="0">Today</option>
-                    
-                    <option value="1">Yesterday</option>
-                    
-                    <option value="7" selected="">This Week</option>
-                    
-                    <option value="30">This Month</option>
-                  
-                  </select>
+              <div class="col-md-12">
+                <ul class="products-list product-list-in-box">
+                @foreach($result['recentProducts'] as $recentProducts)
+                <li class="item">
+                  <div class="product-img">
+                    <img src="{{asset('').$recentProducts->products_image}}" alt="" width=" 100px" height="100px">
+                  </div>
+                  <div class="product-info">
+                    <a href="{{ URL::to('admin/products/edit') }}/{{ $recentProducts->products_id }}" class="product-title">{{ $recentProducts->products_name }}
+                      <span class="label label-warning label-succes pull-right">
+                        @if(!empty($result['commonContent']['currency']->symbol_left)) {{$result['commonContent']['currency']->symbol_left}} @endif {{ floatval($recentProducts->products_price) }} @if(!empty($result['commonContent']['currency']->symbol_right)) {{$result['commonContent']['currency']->symbol_right}} @endif
+                      </span></a>
+                    </div>
+                  </li>
+                  @endforeach
+                </ul>
+              </div>
+              <div class="box-footer text-center">
+                <a href="{{ URL::to('admin/products/display') }}" class="uppercase" data-toggle="tooltip" data-placement="bottom" title="View All Products">{{ trans('labels.viewAllProducts') }}</a>
+              </div>
+              
+            </div>
+            <!-- /.users-list -->
+          </div>
+          <!-- /.box-body -->
+
+        </div>
+
+
+        <div class="box box-danger border-top-none card">
+
+          <!-- /.box-header -->
+          <div class="box-body padding-0">
+            <h3 class="box-title"> {{ trans('labels.latest_customers') }}</h3>
+            <br/>
+            <div class="row">
+              <div class="col-md-12">
+                @if(count($result['customers'])>0)
+                  <ul class="users-list clearfix">
+                    <?php $i = 1; ?>
+                    @foreach ($result['customers']  as $customer)
+                    @if($i<=21)
+                    <li>
+                      <img src="{{asset('images/user.png')}}">
+                      <a class="users-list-name" href="{{ url('admin/customers/edit/') }}/{{ $customer->id }}">{{ $customer->first_name }} {{ $customer->last_name }}</a>
+                      <span class="users-list-date">{{$customer->created_at}}</span>
+                    </li>
+                    @endif
+                    <?php $i++; ?>
+                    {{--@endforeach--}}
+                    @endforeach
+                  </ul>
+                  @else
+                  <p style="padding: 8px 0 0 10px;">{{ trans('labels.no_customer_exist') }}</p>
+                @endif
                 
               </div>
-              <div class="form-group col-md-6">
-                
-                <input type="text" class="form-control" name="datetimes" id="datetimes">
-                
+              <div class="box-footer text-center">
+                <a href="{{ url('admin/customers/display')}}" class="uppercase" data-toggle="tooltip" data-placement="bottom" title="View All Customers">{{ trans('labels.viewAllCustomers') }}</a>
               </div>
               
             </div>
@@ -202,113 +208,8 @@
     </div>
     @if( $result['commonContent']['roles'] != null and $result['commonContent']['roles']->dashboard_view == 1)
 
-    <div class="row">
-      <div class="col-lg-4 col-xs-6">
-        <!-- small box -->
-        <div class="small-box bg-yellow">
-          <div class="inner">
-            <h3>{{ $result['totalCustomers'] }}</h3>
-
-            <p>{{ trans('labels.customerRegistrations') }}</p>
-          </div>
-          <div class="icon">
-            <i class="ion ion-person-add"></i>
-          </div>
-          <a href="{{ URL::to('admin/customers/display')}}" class="small-box-footer" data-toggle="tooltip" data-placement="bottom" title="{{ trans('labels.viewAllCustomers') }}">{{ trans('labels.viewAllCustomers') }}  <i class="fa fa-arrow-circle-right"></i></a>
-        </div>
-      </div>
-      <!-- ./col -->
-      <div class="col-lg-4 col-xs-6">
-        <!-- small box -->
-        <div class="small-box bg-green">
-          <div class="inner">
-            <h3>{{ $result['totalProducts'] }}</h3>
-
-            <p>{{ trans('labels.totalProducts') }}</p>
-          </div>
-          <div class="icon">
-            <i class="ion ion-pie-graph"></i>
-          </div>
-          <a href="{{ URL::to('admin/products/display')}}" class="small-box-footer" data-toggle="tooltip" data-placement="bottom" title="{{ trans('labels.viewAllProducts') }}">{{ trans('labels.viewAllProducts') }} <i class="fa fa-arrow-circle-right"></i></a>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-xs-6">
-        <!-- small box -->
-        <div class="small-box bg-light-blue">
-          <div class="inner">
-            <h3>{{count($result['completed_orders'])}}</h3>
-            <p>{{ trans('labels.CompleteOrders') }}</p>
-          </div>
-          <div class="icon">
-            <i class="ion ion-bag"></i>
-          </div>
-          <a href="{{ URL::to('admin/orders/display')}}" class="small-box-footer" data-toggle="tooltip" data-placement="bottom" title="{{ trans('labels.viewAllOrders') }}">{{ trans('labels.viewAllOrders') }} <i class="fa fa-arrow-circle-right"></i></a>
-        </div>
-      </div>
-      <!-- ./col -->
-
-    </div>
-    <div class="row">
-      <div class="col-lg-4 col-xs-6">
-        <!-- small box -->
-        <div class="small-box bg-aqua">
-          <div class="inner">
-            <h3>{{ count($result['pending_orders']) }}</h3>
-            <p>{{ trans('labels.NewOrders') }}</p>
-          </div>
-          <div class="icon">
-            <i class="ion ion-bag"></i>
-          </div>
-          <a href="{{ URL::to('admin/orders/display')}}" class="small-box-footer" data-toggle="tooltip" data-placement="bottom" title="{{ trans('labels.NewOrders') }}">{{ trans('labels.NewOrders') }} <i class="fa fa-arrow-circle-right"></i></a>
-        </div>
-      </div>
-      <!-- ./col -->
-      <!-- ./col -->
-      <div class="col-lg-4 col-xs-6">
-        <!-- small box -->
-        <div class="small-box bg-teal">
-          <div class="inner">
-            <h3>
-              <b>@if(count($result['total_sales_currency_wise']) > 0)
-                @foreach($result['total_sales_currency_wise'] as $key => $sales)
-                $ {{ number_format($sales->sale,2) }} 
-
-                @if($key !== count($result['total_sales_currency_wise']))
-                <br />
-                @endif
-                @endforeach
-                @else
-                0
-                @endif
-              </b>
-            </h3>
-            <p>{{ trans('labels.Total Money Earned') }}</p>
-          </div>
-          <div class="icon">
-            <i class="ion ion-bag"></i>
-          </div>
-          <a href="{{ URL::to('admin/orders/display')}}" class="small-box-footer" data-toggle="tooltip" data-placement="bottom" title="{{ trans('labels.viewAllOrders') }}">{{ trans('labels.viewAllOrders') }} <i class="fa fa-arrow-circle-right"></i></a>
-        </div>
-      </div>
-      <!-- ./col -->
-      @if($result['commonContent']['setting']['Inventory'] == '1')
-      <div class="col-lg-4 col-xs-6">
-
-        <div class="small-box bg-red">
-          <div class="inner">
-            <h3>{{ $result['outOfStock'] }} </h3>
-            <p>{{ trans('labels.outOfStock') }}</p>
-          </div>
-          <div class="icon">
-            <i class="ion ion-stats-bars"></i>
-          </div>
-          <a href="{{ URL::to('admin/outofstock')}}" class="small-box-footer" data-toggle="tooltip" data-placement="bottom" title="{{ trans('labels.outOfStock') }}">{{ trans('labels.outOfStock') }} <i class="fa fa-arrow-circle-right"></i></a>
-        </div>
-      </div>
-      @endif
-      <!-- ./col -->
-    </div>
+    
+    
 
     <div class="row">
       <div class="col-sm-12">
@@ -448,244 +349,16 @@
       <div class="col-md-8">
         <!-- MAP & BOX PANE -->
 
-        <!-- /.box -->
-        <div class="row">
-          <!-- /.col -->
 
-          <div class="col-md-12">
-            <!-- USERS LIST -->
-            <div class="box box-danger">
-              <div class="box-header with-border">
-                <h3 class="box-title">{{ trans('labels.latest_customers') }}</h3>
-
-                <div class="box-tools pull-right">
-                  {{--<span class="label label-danger">{{ count($result['customers']) }} {{ trans('labels.new_members') }}</span>--}}
-                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                  </button>
-                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
-                  </button>
-                </div>
-              </div>
-
-              <!-- /.box-header -->
-              <div class="box-body no-padding">
-                @if(count($result['customers'])>0)
-                <ul class="users-list clearfix">
-                  <?php $i = 1; ?>
-                  @foreach ($result['customers']  as $customer)
-                  @if($i<=21)
-                  <li>
-                    <img src="{{asset('images/user.png')}}">
-                    <a class="users-list-name" href="{{ url('admin/customers/edit/') }}/{{ $customer->id }}">{{ $customer->first_name }} {{ $customer->last_name }}</a>
-                    <span class="users-list-date">{{$customer->created_at}}</span>
-                  </li>
-                  @endif
-                  <?php $i++; ?>
-                  {{--@endforeach--}}
-                  @endforeach
-                </ul>
-                @else
-                <p style="padding: 8px 0 0 10px;">{{ trans('labels.no_customer_exist') }}</p>
-                @endif
-
-                <!-- /.users-list -->
-              </div>
-              <!-- /.box-body -->
-              <div class="box-footer text-center">
-                <a href="{{ url('admin/customers/display')}}" class="uppercase" data-toggle="tooltip" data-placement="bottom" title="View All Customers">{{ trans('labels.viewAllCustomers') }}</a>
-              </div>
-              <!-- /.box-footer -->
-            </div>
-            <!--/.box -->
-          </div>
-          <!-- /.col -->
-        </div>
         <!-- /.row -->
 
         <!-- TABLE: LATEST ORDERS -->
-        <div class="box box-info">
-          <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('labels.NewOrders') }}</h3>
-
-            <div class="box-tools pull-right">
-              <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-              </button>
-              <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-            </div>
-          </div>
-          <!-- /.box-header -->
-          <div class="box-body">
-            <div class="table-responsive">
-              <table class="table no-margin">
-                <thead>
-                  <tr>
-                    <th>{{ trans('labels.OrderID') }}</th>
-                    <th>{{ trans('labels.CustomerName') }}</th>
-                    <th>{{ trans('labels.TotalPrice') }}</th>
-                    <th>{{ trans('labels.Status') }} </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  @if(count($result['orders'])>0)
-                  @foreach($result['orders'] as $total_orders)
-                  @foreach($total_orders as $key=>$orders)
-                  @if($key<=10)
-                  <tr>
-                    <td><a href="{{ URL::to('admin/orders/vieworder/') }}/{{ $orders->orders_id }}" data-toggle="tooltip" data-placement="bottom" title="Go to detail">{{ $orders->orders_id }}</a></td>
-                    <td>{{ $orders->customers_name }}</td>
-                    <td>
-                      @if(!empty($result['commonContent']['currency']->symbol_left)) {{$result['commonContent']['currency']->symbol_left}} @endif {{ floatval($orders->total_price) }} @if(!empty($result['commonContent']['currency']->symbol_right)) {{$result['commonContent']['currency']->symbol_right}} @endif
-                    </td>
-                    <td>
-                      @if($orders->orders_status_id==1)
-                      <span class="label label-warning"></span>
-                      @elseif($orders->orders_status_id==2)
-                      <span class="label label-success">
-                        @elseif($orders->orders_status_id==3)
-                      </span>  <span class="label label-danger"></span>
-                      @else
-                      <span class="label label-primary">
-                        @endif
-                        {{ $orders->orders_status }}
-                      </span>
-
-
-                    </td>
-                  </tr>
-                  @endif
-                  @endforeach
-                  @endforeach
-
-                  @else
-                  <tr>
-                    <td colspan="4">{{ trans('labels.noOrderPlaced') }}</td>
-
-                  </tr>
-                  @endif
-
-
-                </tbody>
-              </table>
-            </div>
-            <!-- /.table-responsive -->
-          </div>
-          <!-- /.box-body -->
-          <div class="box-footer clearfix">
-            <!--<a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>-->
-            <a href="{{ URL::to('admin/orders/display') }}" class="btn btn-sm btn-default btn-flat pull-right" data-toggle="tooltip" data-placement="bottom" title="{{ trans('labels.viewAllOrders') }}">{{ trans('labels.viewOrders') }}</a>
-          </div>
-          <!-- /.box-footer -->
-        </div>
+        
         <!-- /.box -->
       </div>
       <!-- /.col -->
 
-      <div class="col-md-4">
 
-        <!-- PRODUCT LIST -->
-
-        <div class="box box-primary">
-          <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('labels.GoalCompletion') }}</h3>
-
-            <div class="box-tools pull-right">
-              <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-              </button>
-              <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-            </div>
-          </div>
-          <!-- /.box-header -->
-          <div class="box-body">
-
-
-            <!-- /.progress-group -->
-            @if(count($result['total_orders'])>0)
-            <div class="progress-group">
-              <span class="progress-text">{{ trans('labels.CompleteOrders') }}</span>
-              <span class="progress-number"><b>{{ count($result['completed_orders']) }}</b>/{{ count($result['total_orders']) }}</span>
-              <div class="progress sm">
-                <div class="progress-bar progress-bar-green" style="width: {{ count($result['completed_orders'])*100/count($result['total_orders']) }}%"></div>
-              </div>
-            </div>
-            @endif
-            @if(count($result['total_orders'])>0)
-            <!-- /.progress-group -->
-            <div class="progress-group">
-              <span class="progress-text">{{ trans('labels.PendingOrders') }}</span>
-              <span class="progress-number"><b>{{ count($result['pending_orders']) }}</b>/{{ count($result['total_orders']) }}</span>
-              <div class="progress sm">
-                <div class="progress-bar progress-bar-yellow" style="width: {{ count($result['pending_orders'])*100/count($result['total_orders']) }}%"></div>
-              </div>
-            </div>
-            @endif
-            @if(count($result['total_orders'])>0)
-            <!-- /.progress-group -->
-            <div class="progress-group">
-              <span class="progress-text">{{ trans('labels.RefundOrders') }}</span>
-              <span class="progress-number"><b>{{ count($result['refunded_orders']) }}</b>/{{ count($result['total_orders']) }}</span>
-              <div class="progress sm">
-                <div class="progress-bar progress-bar-blue" style="width: {{ count($result['refunded_orders'])*100/count($result['total_orders']) }}%"></div>
-              </div>
-            </div>
-            @endif
-            @if(count($result['total_orders'])>0)
-            <!-- /.progress-group -->
-            <div class="progress-group">
-              <span class="progress-text">{{ trans('labels.CancelOrders') }}</span>
-              <span class="progress-number"><b>{{ count($result['cancelled_orders']) }}</b>/{{ count($result['total_orders']) }}</span>
-              <div class="progress sm">
-                <div class="progress-bar progress-bar-red" style="width: {{ count($result['cancelled_orders'])*100/count($result['total_orders']) }}%"></div>
-              </div>
-            </div>
-            @endif
-            <!-- /.progress-group -->
-            @if(count($result['total_orders'])>0)
-            <div class="progress-group">
-              <span class="progress-text">{{ trans('labels.InprocessOrders') }}</span>
-              <span class="progress-number"><b>{{ count($result['inprocess']) }}</b>/{{ count($result['total_orders']) }}</span>
-              <div class="progress sm">
-                <div class="progress-bar progress-bar-red" style="width: {{ count($result['inprocess'])*100/count($result['total_orders']) }}%"></div>
-              </div>
-            </div>
-            @endif
-          </div>
-          <!-- /.box-body -->
-        </div>
-        <div class="box box-primary">
-          <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('labels.RecentlyAddedProducts') }}</h3>
-            <div class="box-tools pull-right">
-              <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-              </button>
-              <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-            </div>
-          </div>
-          <!-- /.box-header -->
-          <div class="box-body">
-            <ul class="products-list product-list-in-box">
-              @foreach($result['recentProducts'] as $recentProducts)
-              <li class="item">
-                <div class="product-img">
-                  <img src="{{asset('').$recentProducts->products_image}}" alt="" width=" 100px" height="100px">
-                </div>
-                <div class="product-info">
-                  <a href="{{ URL::to('admin/products/edit') }}/{{ $recentProducts->products_id }}" class="product-title">{{ $recentProducts->products_name }}
-                    <span class="label label-warning label-succes pull-right">
-                      @if(!empty($result['commonContent']['currency']->symbol_left)) {{$result['commonContent']['currency']->symbol_left}} @endif {{ floatval($recentProducts->products_price) }} @if(!empty($result['commonContent']['currency']->symbol_right)) {{$result['commonContent']['currency']->symbol_right}} @endif
-                    </span></a>
-                  </div>
-                </li>
-                @endforeach
-              </ul>
-            </div>
-            <!-- /.box-body -->
-            <div class="box-footer text-center">
-              <a href="{{ URL::to('admin/products/display') }}" class="uppercase" data-toggle="tooltip" data-placement="bottom" title="View All Products">{{ trans('labels.viewAllProducts') }}</a>
-            </div>
-            <!-- /.box-footer -->
-          </div>
-          <!-- /.box -->
-        </div>
         <!-- /.col -->
       </div>
       @endif
