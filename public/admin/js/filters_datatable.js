@@ -1,6 +1,7 @@
 jQuery(function ($) {
     
-    var table = $('.yajra-datatable').DataTable({
+	//Define & Setup Data Table
+    var dTable = $('.yajra-datatable').DataTable({
         processing: true,
         serverSide: true,
 		"dom": '<"length col-md-1"l><"filters col-md-11"f>tp<"clear">',
@@ -20,7 +21,7 @@ jQuery(function ($) {
             },
         ],
 		initComplete: function () {
-            //this.api().columns().every( function (idx) {
+            //Drop Down Filters
 			this.api().columns().indexes().flatten().each( function ( idx ) {
 
 				var column = this;
@@ -43,9 +44,9 @@ jQuery(function ($) {
 					column.data().unique().sort().each( function ( d, j ) {
 						select.find('select').append( '<option value="'+d+'">'+d+'</option>' )
 					} );
-					
+
+					//Status Buttons Tabs 
 					if(idx == 5){
-						
 						var btnGroup = $('<div class="btn-group" role="group" aria-label="..."><button type="button" class="btn btn-default active" data-value="">All</button></div>')
 							.appendTo($("#filter-btn-row"))
 							.on( 'click', 'button', function () {
@@ -68,6 +69,7 @@ jQuery(function ($) {
 				}
             } );
 			
+			//More Filters
 			var moreFilters = $('<label><button class="btn btn-default" type="button" id="more-filters" >More filters</button></label>')
 							//+'<aside id="morefilter-aside">'
 							//+'<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>'
@@ -82,28 +84,44 @@ jQuery(function ($) {
 			$("#example1_filter").on( 'click', '.close', function () {
 								$("#morefilter-aside").toggleClass('active');
 							});
-							
-			var sortDropdown = $('<div class="dropdown">'
+			
+			//Sort Drop Down
+			var sortDropdown = $('<div class="dropdown sortDropdown">'
 								  +'<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'
 									+'Sort'
 									+'<span class="caret"></span>'
 								  +'</button>'
-								  +'<ul class="dropdown-menu" aria-labelledby="dropdownMenu2">'
+								  +'<ul class="dropdown-menu sort-menu" aria-labelledby="dropdownMenu2">'
 									+'<li class="dropdown-header">Sort By</li>'
-									+'<li><label class="radio-inline"><input type="radio" name="optradio">Date (oldest first)</label></li>'
-									+'<li><label class="radio-inline"><input type="radio" name="optradio">Date (newest first)</label></li>'
-									+'<li><label class="radio-inline"><input type="radio" name="optradio">Customer name (A-Z)</label></li>'
-									+'<li><label class="radio-inline"><input type="radio" name="optradio">Customer name (Z-A)</label></li>'
-									+'<li><label class="radio-inline"><input type="radio" name="optradio">Order status (A-Z)</label></li>'
-									+'<li><label class="radio-inline"><input type="radio" name="optradio">Order status (Z-A)</label></li>'
-									+'<li><label class="radio-inline"><input type="radio" name="optradio">Total price (low to high)</label></li>'
-									+'<li><label class="radio-inline"><input type="radio" name="optradio">Total price (high to low)</label></li>'
+									+'<li><label class="radio-inline"><input type="radio" name="optradio" data-column="4" data-direction="asc"  value="1">Date (oldest first)</label></li>'
+									+'<li><label class="radio-inline"><input type="radio" name="optradio" data-column="4" data-direction="desc" value="1">Date (newest first)</label></li>'
+									+'<li><label class="radio-inline"><input type="radio" name="optradio" data-column="1" data-direction="asc" value="1">Customer name (A-Z)</label></li>'
+									+'<li><label class="radio-inline"><input type="radio" name="optradio" data-column="1" data-direction="desc" value="1">Customer name (Z-A)</label></li>'
+									+'<li><label class="radio-inline"><input type="radio" name="optradio" data-column="5" data-direction="asc" value="1">Order status (A-Z)</label></li>'
+									+'<li><label class="radio-inline"><input type="radio" name="optradio" data-column="5" data-direction="desc" value="1">Order status (Z-A)</label></li>'
+									+'<li><label class="radio-inline"><input type="radio" name="optradio" data-column="3" data-direction="asc" value="1">Total price (low to high)</label></li>'
+									+'<li><label class="radio-inline"><input type="radio" name="optradio" data-column="3" data-direction="desc" value="1">Total price (high to low)</label></li>'
 								  +'</ul>'
 								+'</div>')
 							//<div class="btn-group" role="group" aria-label="..."><button type="button" class="btn btn-default" data-value="">All</button></div>')
-							.appendTo($("#example1_filter"))
-							.on( 'click', 'button', function () {
+							.appendTo($("#example1_filter"));
+							
+							$("#example1_filter").on( 'change', 'input[name="optradio"]', function () {
+								console.log("Sort change ...");
+								var column = $(this).data('column');
+								var direction = $(this).data('direction');
+								console.log(column);
+								dTable
+								.column( column )
+								.order( direction )
+								.draw();
 								
+								//dTable.fnSort([ [3,'asc']] );
+							});
+							
+							$("#example1_filter").on( 'click', 'input', function () {
+								console.log("Sort clicked ...");
+								//table.fnSort([ [3,'asc']] );
 							});
         }
     }); 

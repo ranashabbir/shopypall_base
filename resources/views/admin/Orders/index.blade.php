@@ -141,18 +141,18 @@
 			<aside id="morefilter-aside">
 				<h3>More filters</h3>
 				<!-- <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
-				<div class="accordion" id="accordionExample">
+				<div class="accordion" id="accordionMoreFilters">
 				  <div class="card">
-					<div class="card-header" id="headingOne">
+					<div class="card-header" id="paymentMethod">
 					  <h2 class="mb-0">
-						<button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-						  Delivery Method
+						<button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapsePaymentMethod" aria-expanded="true" aria-controls="collapseOne">
+						  Payment Method
 						  <span class="caret"></span>
 						</button>
 					  </h2>
 					</div>
 
-					<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+					<div id="collapsePaymentMethod" class="collapse" aria-labelledby="paymentMethod" data-parent="#accordionMoreFilters">
 					  <div class="card-body">
 						<ul class="" >
 							<li><label class="radio-inline"><input type="radio" name="optradio">Cash On Delivery</label></li>
@@ -162,20 +162,79 @@
 					</div>
 				  </div>
 				  <div class="card">
-					<div class="card-header" id="headingTwo">
+					<div class="card-header" id="deliveryMethod">
 					  <h2 class="mb-0">
-						<button class="btn btn-default collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+						<button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseDeliveryMethod" aria-expanded="true" aria-controls="collapseOne">
+						  Delivery Method
+						  <span class="caret"></span>
+						</button>
+					  </h2>
+					</div>
+
+					<div id="collapseDeliveryMethod" class="collapse" aria-labelledby="deliveryMethod" data-parent="#accordionMoreFilters">
+					  <div class="card-body">
+						<ul class="" >
+							<li><label class="radio-inline"><input type="radio" name="optradio">Free Shipping</label></li>
+							<li><label class="radio-inline"><input type="radio" name="optradio">Paid Shipping</label></li>
+						</ul>
+					  </div>
+					</div>
+				  </div>
+				  <div class="card">
+					<div class="card-header" id="orderStatus">
+					  <h2 class="mb-0">
+						<button class="btn btn-default collapsed" type="button" data-toggle="collapse" data-target="#collapseOrderStatus" aria-expanded="false" aria-controls="collapseTwo">
 						  Order Status
 						  <span class="caret"></span>
 						</button>
 					  </h2>
 					</div>
-					<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+					<div id="collapseOrderStatus" class="collapse" aria-labelledby="orderStatus" data-parent="#accordionMoreFilters">
 					  <div class="card-body">
 						<ul class="" >
 							<li><label class="radio-inline"><input type="radio" name="optradio">All</label></li>
 							<li><label class="radio-inline"><input type="radio" name="optradio">Pending</label></li>
 							<li><label class="radio-inline"><input type="radio" name="optradio">In Process</label></li>
+						</ul>
+					  </div>
+					</div>
+				  </div>
+				  <div class="card">
+					<div class="card-header" id="orderLocation">
+					  <h2 class="mb-0">
+						<button class="btn btn-default collapsed" type="button" data-toggle="collapse" data-target="#collapseOrderLocation" aria-expanded="false" aria-controls="collapseTwo">
+						  Order Location
+						  <span class="caret"></span>
+						</button>
+					  </h2>
+					</div>
+					<div id="collapseOrderLocation" class="collapse" aria-labelledby="orderLocation" data-parent="#accordionMoreFilters">
+					  <div class="card-body">
+						<ul class="" >
+							<li><label class="radio-inline"><input type="radio" name="optradio">All</label></li>
+							<li><label class="radio-inline"><input type="radio" name="optradio">New York</label></li>
+							<li><label class="radio-inline"><input type="radio" name="optradio">London</label></li>
+						</ul>
+					  </div>
+					</div>
+				  </div>
+				  <div class="card">
+					<div class="card-header" id="orderDate">
+					  <h2 class="mb-0">
+						<button class="btn btn-default collapsed" type="button" data-toggle="collapse" data-target="#collapseOrderDate" aria-expanded="false" aria-controls="collapseTwo">
+						  Order Date
+						  <span class="caret"></span>
+						</button>
+					  </h2>
+					</div>
+					<div id="collapseOrderDate" class="collapse" aria-labelledby="orderDate" data-parent="#accordionMoreFilters">
+					  <div class="card-body">
+						<ul class="" >
+							<li><label class="radio-inline"><input type="radio" name="optradio">Today</label></li>
+							<li><label class="radio-inline"><input type="radio" name="optradio">Last 7 Days</label></li>
+							<li><label class="radio-inline"><input type="radio" name="optradio">Last 30 Days</label></li>
+							<li><label class="radio-inline"><input type="radio" name="optradio">Last 90 Days</label></li>
+							<li><label class="radio-inline"><input type="radio" name="optradio">Last 12 Months</label></li>
 						</ul>
 					  </div>
 					</div>
