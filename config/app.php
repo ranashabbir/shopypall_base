@@ -188,6 +188,8 @@ return [
         'Folklore\Image\ImageServiceProvider',
         Kyslik\ColumnSortable\ColumnSortableServiceProvider::class,
         Vectorcoder\LaravelInstaller\Providers\LaravelInstallerServiceProvider::class,
+		
+		Yajra\DataTables\DataTablesServiceProvider::class,
 
 
     ],
@@ -244,7 +246,7 @@ return [
         'Madzipper' => Madnest\Madzipper\Madzipper::class,
         'PaytmWallet' => Anand\LaravelPaytmWallet\Facades\PaytmWallet::class,
 
-
+		'DataTables' => Yajra\DataTables\Facades\DataTables::class,
 
     ],
 

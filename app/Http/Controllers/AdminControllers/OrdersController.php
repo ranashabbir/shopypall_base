@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Lang;
 use App\Models\Core\Order;
+use DataTables;
 
 class OrdersController extends Controller
 {
@@ -21,19 +22,34 @@ class OrdersController extends Controller
     }
 
     //add listingOrders
-    public function display()
+    public function display(Request $request)
     {
         $title = array('pageTitle' => Lang::get("labels.ListingOrders"));        
 
         $message = array();
         $errorMessage = array();        
         
-        $ordersData['orders'] = $this->Order->paginator();
-        $ordersData['message'] = $message;
-        $ordersData['errorMessage'] = $errorMessage;
-        $ordersData['currency'] = $this->myVarsetting->getSetting(); 
-        $result['commonContent'] = $this->Setting->commonContent();
-        return view("admin.Orders.index", $title)->with('listingOrders', $ordersData)->with('result', $result);
+		if ($request->ajax()) {
+			$data = $this->Order->orders_datatable();
+			//print_r($data);
+			return Datatables::of($data)
+					->addIndexColumn()
+					->addColumn('action', function($row){
+						$actionBtn = '<a data-toggle="tooltip" data-placement="bottom" title="" href="vieworder/'.$row->orders_id.'" class="badge bg-light-blue" data-original-title="View Order"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+									<a data-toggle="tooltip" data-placement="bottom" title="Delete Order" id="deleteOrdersId" orders_id="'.$row->orders_id.'" class="badge bg-red"><i class="fa fa-trash" aria-hidden="true"></i></a>';
+						return $actionBtn;
+					})
+					->rawColumns(['action'])
+					->make(true);
+		}else {
+			$ordersData['orders'] = $this->Order->paginator();
+			$ordersData['message'] = $message;
+			$ordersData['errorMessage'] = $errorMessage;
+			$ordersData['currency'] = $this->myVarsetting->getSetting(); 
+			$result['commonContent'] = $this->Setting->commonContent();
+			return view("admin.Orders.index", $title)->with('listingOrders', $ordersData)->with('result', $result);
+		}
+        
     }
 
     //view order detail

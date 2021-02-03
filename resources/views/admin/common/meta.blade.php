@@ -52,6 +52,9 @@
 
   <!-- Styles | 01-15-21 -->
   <link rel="stylesheet" href="{!! asset('admin/css/styles.css') !!} ">
+  
+  <!-- Filer & Datatables -->
+  <link rel="stylesheet" href="{!! asset('admin/css/filters_datatable.css') !!} ">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
