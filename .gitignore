@@ -21,6 +21,7 @@ Thumbs.db
 /vendor
 /updates
 *.zip
+/bootstrap
 
 /storage
 .env
@@ -29,4 +30,3 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-

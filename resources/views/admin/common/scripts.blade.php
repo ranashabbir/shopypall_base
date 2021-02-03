@@ -54,7 +54,16 @@
 
 <script type="text/javascript">
 
-
+$(function() {
+  $('input[name="datetimes"]').daterangepicker({
+    timePicker: true,
+    startDate: moment().startOf('hour').subtract(168, 'hour'),
+    endDate: moment().startOf('hour'),
+    locale: {
+      format: 'DD/MM/YYYY'
+    }
+  });
+ });
 
 $(function() {
 $("img").click(function() {
