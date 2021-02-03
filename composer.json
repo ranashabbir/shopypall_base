@@ -15,7 +15,7 @@
         "folklore/image": "0.3.*",
         "joeyrush/better-migrate-seed": "^0.3.0",
         "kyslik/column-sortable": "^6.0",
-        "laravel/framework": "6.0",
+        "laravel/framework": "^6.20",
         "laravel/helpers": "^1.1",
         "laravel/socialite": "^4.1",
         "laravel/tinker": "^1.0",
@@ -25,8 +25,9 @@
         "php-http/guzzle6-adapter": "^2.0",
         "php-http/message": "^1.8",
         "razorpay/razorpay": "^2.5",
+        "spatie/db-dumper": "^2.14",
         "vectorcoder/laravel-installer": "dev-master",
-        "spatie/db-dumper": "^2.14"
+        "yajra/laravel-datatables-oracle": "~9.0"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

@@ -54,6 +54,59 @@ class Order extends Model
         return $orders;
     }
 
+	public function orders_datatable(){
+
+        $language_id = '1';
+        $orders = DB::table('orders')->orderBy('created_at', 'DESC')
+            ->where('customers_id', '!=', '')->get();
+
+        $index = 0;
+        $total_price = array();
+
+        foreach ($orders as $orders_data) {
+            $orders_products = DB::table('orders_products')->sum('final_price');
+
+            $orders[$index]->total_price = $orders_products;
+
+			
+            $orders_status_history = DB::table('orders_status_history')
+                ->LeftJoin('orders_status', 'orders_status.orders_status_id', '=', 'orders_status_history.orders_status_id')
+                ->LeftJoin('orders_status_description', 'orders_status_description.orders_status_id', '=', 'orders_status.orders_status_id')
+                ->select('orders_status_description.orders_status_name', 'orders_status_description.orders_status_id')
+                ->where('orders_status_description.language_id', '=', $language_id)
+                ->where('orders_id', '=', $orders_data->orders_id)
+                ->where('orders_status.role_id', '<=', 2)
+                ->orderby('orders_status_history.date_added', 'DESC')->limit(1)->get();
+
+            $deliveryboy_orders_status_history = DB::table('orders_status_history')
+                ->LeftJoin('orders_status', 'orders_status.orders_status_id', '=', 'orders_status_history.orders_status_id')
+                ->LeftJoin('orders_status_description', 'orders_status_description.orders_status_id', '=', 'orders_status.orders_status_id')
+                ->select('orders_status_description.orders_status_name', 'orders_status_description.orders_status_id')
+                ->where('orders_status_description.language_id', '=', $language_id)
+                ->where('orders_id', '=', $orders_data->orders_id)
+                ->where('orders_status.role_id', '=', 3)
+                ->orderby('orders_status_history.date_added', 'DESC')->first();
+
+            if ($deliveryboy_orders_status_history) {
+                $orders[$index]->deliveryboy_orders_status_id = $deliveryboy_orders_status_history->orders_status_id;
+                $orders[$index]->deliveryboy_orders_status = $deliveryboy_orders_status_history->orders_status_name;
+            } else {
+                $orders[$index]->deliveryboy_orders_status_id = '';
+                $orders[$index]->deliveryboy_orders_status = '';
+            }
+			if($orders[$index]->ordered_source == 1){
+				$orders[$index]->ordered_source_label = 'Website';
+			}else {
+				$orders[$index]->ordered_source_label = 'Application';
+			}
+            $orders[$index]->orders_status_id = $orders_status_history[0]->orders_status_id;
+            $orders[$index]->orders_status = $orders_status_history[0]->orders_status_name;
+            $index++;
+
+        }
+        return $orders;
+    }
+	
     public function detail($request){
 
         $language_id = '1';
